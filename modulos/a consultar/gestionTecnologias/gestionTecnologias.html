@@ -1,0 +1,102 @@
+<script type="text/ng-template" id="nodes_renderer.html">
+
+    <div ui-tree-handle class="{{node.clase}} tree-node tree-node-content" ng-click="seleccionarElemento(this, node)" id="{{node.nombre}}">
+        <a class="btn btn-success btn-xs flechaAyuda" ng-if="node.nodosHijos && node.nodosHijos.length > 0" data-nodrag ng-click="toggle(this)">
+            <span class="glyphicon"
+                ng-class="{
+                    'glyphicon-chevron-right': collapsed,
+                    'glyphicon-chevron-down': !collapsed}">
+            </span>
+          </a>
+        {{node.nombre}}
+        <a class="pull-right btn btn-danger btn-xs borrarAyuda"
+           data-nodrag
+           ng-click="eliminarElem($event, this)"
+           ng-if="this.$parentNodeScope != undefined && this.$modelValue.clase != 'hojaInvalida'">
+            
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+        <a class="pull-right btn btn-primary btn-xs btnAniadirNodo btnAniadir nodoAyuda" data-nodrag ng-click="aniadirElem($event, this, 'nodo')"  ng-if="node.clase=='nodo' || node.clase=='raiz'">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+        <a class="pull-right btn btn-success btn-xs btnAniadir hojaAyuda" data-nodrag ng-click="aniadirElem($event, this, 'hoja')" style="margin-right: 8px;" ng-if="node.clase=='nodo' || node.clase=='raiz'">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodosHijos" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.nodosHijos" ui-tree-node data-nodrop-enabled="node.clase!=='nodo'" ng-include="'nodes_renderer.html'"></li>
+    </ol>
+</script>
+<h1 class="cabeceraPagina">Gestion de tecnologias</h1>
+<div class="row">
+    <div class="col-sm-6">
+        <div ui-tree="eventosArbol" id="tree-root" data-drag-delay="250" >
+          <ol ui-tree-nodes ng-model="data">
+            <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+          </ol>
+        </div>
+        <div id="leyendaAyuda">
+            <div class="leyenda"><div id="colorRaiz"></div>Raiz</div>
+            <div class="leyenda"><div id="colorNodo"></div>Nodo</div>
+            <div class="leyenda"><div id="colorHoja"></div>Hoja</div>
+            <div class="leyenda"><div id="colorHojaInvalida"></div>Hoja sin validar</div>
+        </div>
+    </div>
+    <div id="contenedorOpciones"  class="col-sm-6">
+        <div ng-hide="nodoSeleccionado==null || nodoSeleccionado.clase=='raiz'" id="datosTecnologia">
+            <form name="datosNodo">
+                <div id="ContenedporTipoTecnologiaYNombre">
+                    <div id=tituloDatosTecnologia>{{titulo}}</div><br>
+                    <md-input-container>
+                        <label>Nombre</label>
+                        <input ng-keypress="intro($event)" id="nombreTecnologia" type="text"ng-model="nodoSeleccionado.nombre" ng-required="true">
+                    </md-input-container>
+                </div>
+                <div ng-if="nodoSeleccionado.clase!=='nodo'">
+
+                    <div>
+                        <md-input-container>
+
+                            <label>Tipo</label>
+                        <md-select ng-model="nodoSeleccionado.tipo" ng-required="true">
+                          <md-option ng-repeat="tipo in tipos" value="{{tipo}}">
+                            {{tipo}}
+                          </md-option>
+                        </md-select>
+                        <div id="productoTecnologia">
+                            <md-checkbox id="cBProductoTecnologia" ng-model="nodoSeleccionado.producto">Producto</md-checkbox>
+                        </div>
+                        <!--div>
+                            <md-checkbox ng-model="estaValidado" ng-disabled="true">Validado</md-checkbox>
+                        </div-->
+                      </md-input-container>
+                    </div>
+                </div>
+                <md-button class="botonesApp" type="button"  ng-click="guardarElem()"
+                           ng-disabled="datosNodo.$invalid">Guardar</md-button>
+                <md-button class="botonesApp" ng-show="true && (nodoSeleccionado.clase=='hojaInvalida')" type="button"  ng-click="validarElem()">Validar</md-button>
+                <md-autocomplete class="mozilla"
+                                 id="autocompleteTecnologias" 
+                                 ng-show="hayRefAsociadas && (nodoSeleccionado.clase=='hojaInvalida')"
+                                 md-selected-item="clientes.elemSeleccionado"
+                                 md-search-text="clientes.texto"
+                                 md-selected-item-change="selectedItemChange(item, 'cliente')"
+                                 md-items="item in filtrar(clientes.texto, 'cliente') | limitTo : 8"
+                                 md-item-text="item.display"
+                                 md-min-length="3"
+                                 ng-focus="hayError=false"
+                                 placeholder="Asociar a sus referencias a...">
+                    <md-item-template>
+                        <span md-highlight-text="clientes.texto" md-highlight-flags="^i">{{item.display}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No se encuenta "{{clientes.texto}}" en la lista.
+                    </md-not-found>
+              </md-autocomplete>
+                <md-button class="botonesApp" ng-show="true && (nodoSeleccionado.clase=='hojaInvalida')" type="button"  ng-click="rechazarElem(hayRefAsociadas)">Rechazar</md-button>
+                <p class="error" ng-show="hayError">Introducir referencia a asociar</p>
+            </form>
+        </div>
+    </div>
+</div>
+

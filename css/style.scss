@@ -1,0 +1,1120 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block; 
+}
+
+/*CSS Global Variables*/
+$colorOscuro: #242424;
+$colorClaro: #ececec;
+$colorDetalles: #ee941a;
+$colorSombreado: #D8D8D8;
+$colorError: #CE0000;
+
+$colorHoja: #42DC69;
+$colorNodo: #82CDF3;
+$colorHojaInvalida: #F43636;
+
+/*medias querys*/
+
+@media screen and (max-width: 1250px) {
+    .iconosMenu {
+        margin-left: 10% !important;
+    }
+}
+@media screen and (max-width: 1185px){
+    .iconosMenu {
+        margin-left: 5% !important;
+    }
+}
+
+@media screen and (max-width: 1130px){
+    .iconosMenu {
+        margin-left: 0 !important;
+    }
+}
+
+@media screen and (max-width: 1075px){
+    .md-button{
+        margin-right: 0;
+        margin-left: 0;
+        font-size: 15px;
+    }
+    .iconosMenu {
+        margin-left: 6% !important;
+    }
+}
+
+@media screen and (max-width: 1040px){
+    .iconosMenu {
+        margin-left: 0 !important;
+    }
+}
+
+/*@media screen and (max-width: 970px){
+    .iconosMenu {
+        width: 1px !important;
+    }
+}*/
+
+@media screen and (max-width: 970px){
+    .md-button{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 875px){
+    .iconosMenu {
+        width: 1px !important;
+    }
+}
+
+
+
+@media screen and (max-width: 835px){
+    .md-button{
+        font-size: 13px;
+    }
+    #menu{
+        width: 80% !important;
+        background-color: black;
+    }
+    .iconosMenu {
+        margin-left: 30% !important;
+    }
+}
+
+@media screen and (max-width: 700px){
+    #menu{
+        width: 100% !important;
+        border-radius: 0 !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .contenedorVistas {
+       width: 80%;
+    }
+    .botonesCrear{
+        margin-bottom: 50px;
+    }
+}
+
+
+
+:focus {
+    outline: $colorDetalles auto 5px;
+}
+
+body {
+    line-height: 1;  
+    font-size: 13px;
+    height: 31px;
+    width: 100%;
+    font-family: verdana;
+    overflow: hidden;
+}
+
+.error{
+    margin-left: 2%;
+    color: crimson;
+}
+/* -------------------- Contenedor de las vistas de la pagina (ng-view) ---------------------- */
+
+#contenedorVistas{
+    height: 75%;
+    //overflow-x: hidden;
+}
+
+/* ------------------------------- CABECERA Y PIE ---------------------- */
+
+header {
+    width:auto;
+    min-width: 20%;
+    height: 10%;
+    overflow:hidden; 
+    background: $colorOscuro;
+    box-shadow: 1px 1px 1px 1px #777;
+}
+header #logoSharon {
+    max-height: 100%;
+    min-height: 100%;
+    display: block;
+    margin: auto;
+}
+footer {
+    width:100%; 
+    overflow:hidden; 
+    background: $colorOscuro;
+    position: fixed;  
+    bottom: 0px;
+    height: 7%;
+    clear:both;
+    min-height: 50px;
+}
+footer #logoGfi {
+    /*width: 5%;
+    min-width: 5%;*/
+    max-height: 70%;
+    min-height: 5%;
+    float: left;
+    margin-top: 5px;
+    margin-left: 9px;
+}
+footer nav a {
+    float: right;
+    display: inline-block;
+    color: $colorDetalles;
+    padding: 2% 2%;
+    line-height: normal;
+    font-size: 11px;
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease; 
+    }
+footer nav a:hover {
+    background: $colorDetalles;
+    border-radius:50px;
+}
+footer #lineaFooter{
+    box-shadow: 1px 1px 1px 1px #777;
+    background: $colorDetalles;
+    bottom: 0px;
+    height:4px;
+    width:100%;
+    position: fixed;
+}
+
+/* --------------------------- ESTILOS MENÚ ---------------------- */
+#menu{
+    width:45%;
+    height: auto;
+    color: $colorOscuro;
+    overflow:hidden; 
+    background: $colorDetalles;
+    border-radius: 0 0 20px 0 ;
+    box-shadow: 1px 1px 1px 1px #777;  
+}
+.textoHipervinculo {
+    color:$colorOscuro;
+    text-decoration:none;
+}
+.textoHipervinculo:hover {
+    color:$colorDetalles;
+    text-decoration:none;
+    width:100%;    
+}
+.iconoLogout {
+    margin-left: 200%; 
+}
+.iconosMenu {
+    width: 10px;
+    height: 25px;
+    margin-top: 2%; 
+    margin-left: 15%;
+    cursor: pointer;
+}
+
+/* --------------------------- ESTILOS BIENVENIDA ---------------------- */
+
+#bienvenida{
+    text-align: center;
+    margin-top: 300px;   
+}
+
+/* --------------------------- ESTILOS COMUNES ----------------------------- */
+
+.cabeceraPagina {
+    margin-right: 25px;
+    text-align: right;
+    font-size: 25px;
+    height: 40px;
+    color: #ee941a;
+}
+.botonesApp{
+    background-color: $colorDetalles;
+    font-size: 13px;
+    text-align: center; 
+}
+#dialogLogueado{
+    width: 90px;
+    height: 90px;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 2px 2px 2px 2px #777; 
+    background-color: $colorClaro;  
+}
+.contenedorVistas{
+    margin-top: 0.2%;
+    overflow: auto;
+    overflow-x: hidden;
+    height: 700px;
+}
+.contenedorVistasAyuda{
+    margin-top: 0.2%;
+    overflow: initial;
+    height: 700px;
+}
+/* --------------------------- ESTILOS LISTAR USUARIOS ----------------------------- */
+#contenedorListarReferencia{
+    // introducir media querry para que no se estropee listar
+}
+.contenedorPaginacion {
+    text-align: center;
+    position: relative;
+    bottom: 2%;
+    width:100%;
+}
+.listarReferencia {
+	text-align: center;
+    border-bottom: #ee941a 2px solid;
+}
+/* --------------------------- ESTILOS LOGIN ----------------------------- */
+
+#contenedorLogin {
+	margin: 50px auto;
+    margin-top: 150px;
+	width: 400px;
+    font-family: sans-serif;
+    font-size: 15px;  
+}
+
+#contenedorLogin #superior {
+	background-color: $colorClaro;
+    color: #777;
+    margin-bottom: 14px;
+	-webkit-border-radius:20px 20px 0 0 ;
+    -moz-border-radius: 20px 20px 0 0;
+	border-radius:  20px 20px 0 0;
+	padding: 20px 26px;
+    box-shadow: 2px 2px 4px 2px #666;     
+}
+
+#contenedorLogin #superior #contenido{
+    margin-left: 20px;
+}
+
+#contenedorLogin #superior p{
+    text-align: center;
+    color: red;
+    font-size: 11px;
+}
+
+ #contenedorLogin #inferior {
+	background-color: $colorOscuro;
+	-webkit-border-radius: 0 0 20px 20px;
+	-moz-border-radius: 0 0 20px 20px;
+	border-radius: 0 0 20px 20px;
+	color: #fff;
+	font-size: 12px;
+	padding: 20px 26px;
+    box-shadow: 2px 2px 4px 2px #666; 
+}
+
+#inferior p{ 
+    margin-top: 15px;
+    float: right;
+   
+}
+
+#inferior #bt{ 
+    margin-top: 10px;
+    margin-left: 50px;
+    float: left; 
+}
+
+
+/* ---------------------------- ESTILOS ALTA USUARIOS ---------------------- */
+
+#cabeceraRol{ 
+    margin-bottom: 2%;
+}
+
+#listaUsuarios {
+    background: whitesmoke;
+    position: absolute;
+    left: 75%;
+    margin-left: -175px;
+    margin-top: 35px;
+    width: 350px;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 0 white;
+    max-height: 500px;
+}
+
+#listaRoles {
+    background: whitesmoke;
+    position: absolute;
+    left: 25%;
+    margin-left: -175px;
+    margin-top: 35px;
+    width: 350px;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 0 white;
+    max-height: 500px;
+}
+
+#cajaFiltro {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 19px;
+    padding: 5px;
+    font-family: calibri light;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+ul {
+    margin: 0 auto;
+    padding: 0;
+    max-height: 320px;
+    //overflow-y: hidden;
+    //border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 5px 5px 0 5px;
+    border-left: none;
+    border-right: none;
+}
+
+#cajaFiltro:focus {
+    border: 2px solid #FAAAAA;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.1);
+    outline: none;
+}
+
+.right {
+    float: right;
+}
+
+.radioButtondemoBasicUsage .radioValue {
+    margin-left: 5px;
+    color: #0f9d58;
+    font-weight: bold;
+    padding: 5px; 
+}
+
+.dialogdemoBasicUsage #popupContainer {
+    position: relative; 
+}
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+    font-size: 0.8em;
+    margin-top: 50px; 
+}
+
+.buttondemoBasicUsage .label {
+    position: absolute;
+    bottom: 5px;
+    left: 7px;
+    font-size: 14px;
+    opacity: 0.54; 
+    border-color: $colorDetalles;
+    
+    
+}
+
+label{
+    color: $colorDetalles; 
+}
+
+.autocompletedemoCustomTemplate .autocomplete-custom-template li {
+    border-bottom: 1px solid #ccc;
+    height: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    white-space: normal; 
+}
+
+.autocompletedemoCustomTemplate .autocomplete-custom-template li:last-child {
+    border-bottom-width: 0; 
+}
+
+.autocompletedemoCustomTemplate .autocomplete-custom-template .item-title, .autocompletedemoCustomTemplate .autocomplete-custom-template .item-metadata {
+    display: block;
+    line-height: 2; 
+}
+
+.autocompletedemoCustomTemplate .autocomplete-custom-template .item-title md-icon {
+    height: 18px;
+    width: 18px; 
+}
+
+/*------------------------------ ESTILOS NUEVA REFERENCIA ---------------------------------*/
+
+.md-calendar-day-header th, td {
+    vertical-align: middle;
+}
+
+.radioCertificado{
+    margin:0;
+}
+.labelCertificado{
+    
+    position: relative;
+    display :block;
+    transform:inherit !important;
+    bottom:0;
+}
+
+.inBlock{
+    display: inline-block;
+}
+
+#cajaNueva{
+    line-height:45px;
+    font-size: 15px;
+}
+md-content{
+    display: block;
+    position: relative;
+    overflow: auto;    
+}
+#layout-padding{
+    font-size: 15px;
+    width: 36px;
+    position: relative;
+    padding: 8px; 
+}
+.para1 {
+    margin-left: 130px;
+    margin-right: 130px;
+    margin-bottom: 50px;
+}
+.contenedorBoton {
+    width:95%;
+    text-align: center;
+}
+md-input-container{
+    padding: 1px;
+    position: relative;
+}
+
+.fixed-size  {
+    width: 305px;
+    height: 40px;
+}
+.fixed-size-denominacion {
+    width: 920px;
+    height: 40px;
+}
+.fixed-size-resumen {
+    width: 460px;
+    height: 40px;
+}
+.fixed-size-solucion {
+    width: 920px;
+    height: 40px;
+}
+md-radio-button.md-default-theme.md-checked .md-off, md-radio-button.md-checked .md-off {
+    border-color: $colorDetalles;
+}
+md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
+    background-color: $colorDetalles;
+}
+md-radio-button.md-default-theme.md-checked .md-ink-ripple, md-radio-button.md-checked .md-ink-ripple {
+    color: $colorDetalles;
+}
+md-icon.md-default-theme, md-icon {
+    color: $colorDetalles;
+}
+.md-default-theme .md-datepicker-open .md-datepicker-calendar-icon, .md-datepicker-open .md-datepicker-calendar-icon {
+    fill: $colorDetalles;
+}
+.md-default-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-default-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
+    background: $colorDetalles;
+    color: rgba(255,255,255,0.87);
+    border-color: transparent;  
+}
+.md-default-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator {
+    border: 1px solid $colorDetalles;
+}
+.md-datepicker-input{
+    width: 230px;
+    
+}
+#resumen{
+    float:left;
+}
+#problematica{
+    float:left;
+}
+.botonesCrear{
+    margin-top: 10px;
+    text-align: center;
+}
+#mensajeEstado{  
+    font-family: verdana;
+    font-size: 12px;
+    color: $colorDetalles; 
+    text-align: center; 
+    font-weight: bold;
+}
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-focused .md-input, md-input-container:not(.md-input-invalid).md-input-focused .md-input{
+    border-color: $colorDetalles;
+}
+.txtSimilarMD{
+    font-size: 13px; 
+    color:darkgray;
+}
+.selecTec {
+    float: left;
+    width: 925px;
+    height: 60px;
+}
+.selecCli{
+    float: left;
+    width: 925px;
+    height: 60px;
+}
+.contImg{
+    width: 460px;
+    height: 40px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.contQr{
+    width: 460px;
+    height: 40px;
+}
+.contTec{
+    width: 460px;
+    height: 40px; 
+}
+.contCom{
+    width: 470px;
+    height: 80px;
+}
+.ImgQr{
+    width: 920px;
+    height: 450px
+}
+.contenedor-tecnologia{
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label, md-input-container:not(.md-input-invalid).md-input-has-value label{
+    color: $colorDetalles;    
+}
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-focused label, md-input-container:not(.md-input-invalid).md-input-focused label {
+    color: $colorDetalles;
+}
+md-select:not([disabled]):focus .md-select-value {
+    border-bottom-color: $colorDetalles;
+    color: rgba(0,0,0,0.87);
+}
+md-input-container .md-char-counter {
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    padding-top: 5px;
+    color: rgba(0,0,0,0.26);
+}
+.md-datepicker-input-container.md-datepicker-focused {
+    border-bottom-color: $colorDetalles;
+}
+.md-autocomplete-suggestions li {
+    font-size: 14px;
+    overflow: hidden;
+    padding: 0 15px;
+    line-height:30px;
+    height: 25px;
+    transition: background 0.15s linear;
+    margin: 0px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    background-image: linear-gradient( 90deg, $colorDetalles 10px, #EEE 10px, #EEE 11px, transparent 11px);
+    //padding: 10px 15px 10px 25px;
+    //border: 1px solid #CCC;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+    //margin-bottom: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.md-autocomplete-suggestions li:focus {
+      outline: none; 
+}
+.autocompletedemoCustomTemplate .autocomplete-custom-template li {
+    border-bottom: 1px solid #ccc;
+    height: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    white-space: normal; 
+}
+.autocompletedemoCustomTemplate .autocomplete-custom-template li:last-child {
+    border-bottom-width: 0; 
+}
+
+.autocompletedemoCustomTemplate .autocomplete-custom-template .item-title, .autocompletedemoCustomTemplate .autocomplete-custom-template .item-metadata {
+    display: block;
+    line-height: 2; 
+}
+.autocompletedemoCustomTemplate .autocomplete-custom-template .item-title md-icon {
+    height: 18px;
+    width: 18px; 
+}/* WTF IS THIS
+.md-virtual-repeat-container .md-virtual-repeat-scroller {
+    bottom: 0;
+    box-sizing: border-box;
+    left: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0; 
+}*/
+.md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-scroller {
+  overflow-x: hidden;
+  overflow-y: hidden; 
+}
+md-select-menu md-option[selected] {
+    color: $colorDetalles;
+}
+md-select-menu.md-default-theme md-option[selected]:focus, md-select-menu md-option[selected]:focus {
+    color: #ee941a;
+}
+.botones {
+    margin-left: 30px;
+    margin-bottom: 30px;
+    font-size: 13px;
+    width: 250px;
+    height: 40px;
+    cursor: hand;
+    color: $colorOscuro;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: $colorDetalles;
+    border-radius:  3px 3px 3px 3px;
+    border: none;
+}
+.botones:hover {
+    margin-left: 30px;
+    margin-bottom: 30px;
+    font-size: 13px;
+    width: 250px;
+    height: 40px;
+    cursor: hand;
+    color: $colorOscuro;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightgray;
+    border-radius:  3px 3px 3px 3px;
+    border: none;
+}
+.centrado-QR {
+    margin-left: 110px;
+}
+/*
+.md-virtual-repeat-container.md-autocomplete-suggestions-container.md-whiteframe-z1.md-virtual-repeat-container {
+	height: 26px;
+}
+.md-virtual-repeat-scroller {
+	min-height: 26px;
+}
+.md-virtual-repeat-container.md-autocomplete-suggestions-container {
+	min-height: 26px;
+}*/
+
+md-chips .md-chips.md-focused {
+    box-shadow: 0 2px $colorDetalles;
+}
+
+md-chips .md-chip.md-focused {
+    background: $colorDetalles;
+}
+
+/*--------------------- ESTILOS POPUPS -------------------------*/
+#popUpError{
+    background-color: $colorError;
+}
+#listaError li{
+    list-style-type: disc;
+    margin-bottom: 0.5%;
+}
+#rejectDialog {
+    margin: auto;
+    min-width: 700px;
+    min-height: 300px;
+	max-height: 700px;
+}
+#errorDialog {
+    margin: auto;
+    min-width: 700px;
+    min-height: 375px;
+	max-height: 700px;
+}
+#textoRechazar{
+    display: block;
+}
+.botonesRechazar{
+    display: inline-block;
+    margin-left: 33%;
+    //margin-top: 100%;
+}
+md-dialog {
+    width: 400px;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 20px 20px 20px 20px;
+}
+md-dialog.md-default-theme, md-dialog {
+    border-radius: 20px 20px 20px 20px;
+    background-color: rgb(255,255,255);
+}
+md-dialog md-dialog-content {
+    height: 200px;
+    padding: 30px;
+    font-size: 13px;
+}
+md-dialog md-dialog-content .md-dialog-content-body {
+    width: 100%;
+    padding: 40px;
+    font-size: 15px;
+}
+md-toolbar:not(.md-menu-toolbar) {
+    background-color: $colorDetalles;
+    color: rgba(255,255,255,0.87);
+    font-size: 15px;
+    padding: 25px;  
+}
+.md-button.md-default-theme.md-primary, .md-button.md-primary {
+    color: $colorDetalles;
+}
+#dialogCabecera {
+    font-size: 13px;
+}
+#dialogContenido{
+    font-size: 12px;
+}
+
+/*ESTILOS REFERENCIAS PENDIENTES*/
+#referenciasPendientes th, td{
+    border: none;
+    border-collapse: collapse;
+    padding: 5px;
+     
+}
+#referenciasPendientes th{
+    background-color: $colorDetalles;
+    color:$colorClaro;
+    text-align: center;
+    font-weight: bold;
+}
+#referenciasPendientes{
+    margin: 0 auto;
+    width:95%;
+    height: 2%;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 0px 0px 10px 10px;
+    
+}
+#referenciasPendientes tr:nth-child(odd) {
+    background: $colorSombreado;
+}
+#selPendientes{
+   cursor: pointer;
+}
+.pagination>li>a {
+    color: $colorOscuro;
+}
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+    background-color: $colorDetalles;
+    border-color: $colorDetalles;
+}
+.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
+    color: $colorOscuro;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+/*--------------------- ESTILOS POP UP AÑADIR TEC NO VALIDA -------------------------*/
+
+#nombreTecnologiaNueva{
+    width: 40%;
+}
+
+#inputNombreTecnologia{
+    border-bottom-color: $colorOscuro;
+    color: $colorOscuro;
+    background-image: none;
+}
+
+#tipoNuevaTec{
+    margin-bottom: 9.2%;
+    margin-left: 12%;
+    width: 40%;
+}
+
+#cbProducto{
+    bottom: 23px;
+}
+
+#cbProducto:focus{
+    
+    outline: none;
+
+}
+
+/*--------------------- ESTILOS ARBOL TECNOLOGIAS -------------------------*/
+
+#ContenedporTipoTecnologiaYNombre{
+    
+    max-height: 18%
+    
+}
+#cBProductoTecnologia:focus{
+    
+    outline: none;
+
+}
+#productoTecnologia{
+    
+    margin-top:5%; 
+  
+}
+@-moz-document url-prefix() {
+    .mozilla{
+         top:20% !important;
+        -webkit-transition: top 2s;
+        transition: top 2s;
+    }
+    #autocompletetTecnologias:hover{
+        top:4.5%;
+    }
+}
+#autocompleteTecnologias{
+    
+    width: 40%;
+    margin-right: 2%;
+    margin-left: 2%;
+    display: inline-block;
+}
+
+md-checkbox.md-checked .md-icon {
+    background-color: #ee941a;
+}
+
+.btn {
+    margin-right: 8px;
+}
+
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+tr.angular-ui-tree-empty {
+    height:100px
+}
+
+.group-title {
+    background-color: #687074 !important;
+    color: #FFF !important;
+}
+
+
+/* --- Tree --- */
+.tree-node {
+    border: 1px solid #dae2ea;
+    background: #f8faff;
+    color: #7c9eb2;
+}
+
+.nodrop {
+    background-color: #f2dede;
+}
+
+.tree-node-content {
+    margin: 1.5%;
+    padding: 1%;
+}
+.tree-handle {
+    padding: 10px;
+    background: #428bca;
+    color: #FFF;
+    margin-right: 10px;
+}
+
+.angular-ui-tree-handle:hover {
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.hoja{
+    color: black;
+    background-color: rgba($colorHoja, 0.42);
+}
+
+.nodo{
+    color: black;
+    background-color: rgba($colorNodo, 0.55);
+}
+
+.hojaInvalida{
+    background-color: rgba($colorHojaInvalida, 0.55);
+    color: black;
+}
+
+.elementoSeleccionado{
+    text-decoration: underline;
+    border-style: none;
+}
+
+.hoja.elementoSeleccionado{
+    background-color: rgba($colorHoja, 1);
+}
+
+.hojaInvalida.elementoSeleccionado{
+    background-color: rgba($colorHojaInvalida, 1);
+}
+.nodo.elementoSeleccionado{
+    background-color: rgba($colorNodo, 1);
+}
+
+.btn{
+    margin-right: 2%;
+    border-width: 4%;
+}
+/*
+li:hover{
+    border-width: 1px;
+    border-style: dashed;
+    border-color: blue;
+}*/
+
+#tecnologias .btnAniadirNodo{
+    margin-right: 8%;
+}
+
+#datosTecnologia md-input-container{
+    width: 90%;
+    font-size: 120%;
+}
+#datosTecnologia button{
+    width: 40%;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: inline;
+}
+
+#tituloDatosTecnologia{
+    font-size: 150%;
+    font-style: italic;
+    font-weight: bold;
+}
+
+md-checkbox[disabled].md-checked .md-icon {
+    background-color: $colorDetalles;
+}
+
+md-checkbox[disabled] .md-label {
+    color: black;
+}
+
+md-toast.md-default-theme .md-toast-content, md-toast .md-toast-content {
+    background-color: $colorDetalles;
+    color: black;
+}
+
+.leyenda{
+    display: block;
+}
+#colorRaiz{ 
+    background-color: #F8FAFF;
+    border: 1px solid black;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 1%;
+    padding-right: 4%;
+    padding-bottom: 1.5%;
+    display: inline-block;
+}
+
+#colorNodo{ 
+    background-color: $colorNodo;
+    border: 1px solid black;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 1%;
+    padding-right: 4%;
+    padding-bottom: 1.5%;
+    display: inline-block;
+}
+
+#colorHoja{ 
+    background-color: $colorHoja;
+    border: 1px solid black;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 1%;
+    padding-right: 4%;
+    padding-bottom: 1.5%;
+    display: inline-block;
+}
+
+#colorHojaInvalida{ 
+    background-color: $colorHojaInvalida;
+    border: 1px solid black;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 1%;
+    padding-right: 4%;
+    padding-bottom: 1.5%;
+    display: inline-block;
+}
+
+.glyphicon {
+    top: 0;
+}

@@ -1,0 +1,19 @@
+    <md-dialog id="rejectDialog" aria-label="Datos del Usuario" >
+        <md-toolbar>
+          <div class="dialogCabecera">
+            <h1>Razon para rechazar referencia</h1> 
+          </div>
+        </md-toolbar>
+        <md-dialog-content >
+
+              <md-input-container id="textoRechazar">
+                <label>Motivo</label>
+                <textarea ng-model="motivoRechazo" ng-required="true" columns="70" md-maxlength="300" rows="5" ng-focus="hayError=false"></textarea>
+              </md-input-container>
+            <p class="error" ng-show="hayError">Introducir motivo de rechazo</p>
+              <div class="botonesRechazar">
+                  <md-button class="botonesApp" ng-click="rechazarReferencia()">Rechazar</md-button>
+                  <md-button class="botonesApp" ng-click="cancel()">Cancelar</md-button>
+              </div>
+        </md-dialog-content>
+    </md-dialog>  

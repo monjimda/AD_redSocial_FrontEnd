@@ -1,0 +1,16 @@
+    <md-dialog id="errorDialog" aria-label="Datos del Usuario" >
+        <md-toolbar id="popUpError">
+          <div class="dialogCabecera">
+            <h2>Se han encontrado unos errores</h2> 
+          </div>
+        </md-toolbar>
+        <md-dialog-content >
+            <ul id="listaError">
+                <li ng-repeat="error in errores">
+					<p>
+						{{ error }}
+					</p>
+				</li>
+            </ul>
+        </md-dialog-content>
+    </md-dialog>  

@@ -1,0 +1,24 @@
+<div>
+    <p  class="cabeceraPagina">{{titulo}}</p>
+    <br>
+    <table id="referenciasPendientes">
+      <tr>
+        <th>CLIENTE</th>
+        <th>DENOMINACIÓN</th>		
+        <th>SOLUCIÓN GFI</th>
+      </tr>
+      <tr ng-repeat="referencia in referencias | filter: paginate" ng-click="abrirReferenciaPendiente($index, referencias)" id="selPendientes">
+        <td class="listarReferencia">{{referencia.cliente}} </td>
+        <td class="listarReferencia" ng-if="referencia.denominacion.length<=30">{{referencia.denominacion}}</td>		
+        <td class="listarReferencia" ng-if="referencia.denominacion.length>30">{{referencia.denominacion.substring(0,30) + "..."}}</td>	
+        <td class="listarReferencia" ng-if="referencia.solucionGfi.length<=30">{{referencia.solucionGfi}}</td>
+        <td class="listarReferencia" ng-if="referencia.solucionGfi.length>30">{{referencia.solucionGfi.substring(0,30) + "..."}}</td>
+      </tr>
+    </table>
+    <div class="contenedorPaginacion">
+        <pagination total-items="totalItems" ng-model="currentPage"
+        max-size="5" boundary-links="true"
+        items-per-page="numPerPage" class="pagination-sm" previous-text="Anterior" next-text="Siguiente" first-text="Primero" last-text="Último">
+        </pagination>
+    </div>
+</div>
