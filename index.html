@@ -16,47 +16,27 @@
         <!-- endbuild -->
         
 		<!-- AQUI IRAN LOS CSS NUESTROS QUE NO TENGAN CDN-->
-        <link rel="stylesheet" href="css/angular-ui-tree.min.css">
-        <link rel="stylesheet" type="text/css" href="css/introjs.css"/>
 		<link rel="stylesheet" href="css/style.css" />
        
 	</head>
 	<body>
 		<header>
-            <img id="logoSharon" src="/sharon.png"/>
+            <img id="logoSharon" src="/nicolas_cage.jpg"/>
         </header>
-        <div ng-show="menu" id="menu" layout layout-sm="column" ng-include="'./modulos/menu/menu.html'"></div>
-        <div id="contenedorVistas" ng-init="scroll=true" ng-view ng-intro-options="introOptions" ng-intro-method="lanzarAyuda" ng-class="{'contenedorVistas': scroll, 'contenedorVistasAyuda': !scroll}" ng-intro-onexit="activarScroll" ng-intro-oncomplete="activarScroll" >            
+        <!--div ng-show="menu" id="menu" layout layout-sm="column" ng-include="'./modulos/menu/menu.html'"></div-->
+        <div ng-view>            
 		</div>
         <footer>
-            <img id="logoGfi" src="/logo_gfi.png"/>
+            <img id="logoGfi" src="/nicolas_cage.jpg"/>
              <nav>                
-                <a href="http://www.gfi.es">2015.Sharon.Agile</a>               
+                <a href="nicolas_cage.jpg">2016 AD</a>               
              </nav>       
             <div id="lineaFooter"/>
-        </footer>   
-
-		<!-- build:JSCDNs -->
-            <!-- CDNs-->
-       <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.min.js"></script>
-        <script src="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc2/angular-material.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
-        <script src="http://code.angularjs.org/1.2.16/angular-resource.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-        <script data-require="ui-bootstrap@0.13.0" data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>-->
-<!--        <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>-->
-        
+        </footer>           
         <!-- Locales no minificados -->
         <script type="text/javascript" src="js/no-min/qrcode.js"></script>
         
         <!-- locales minificados-->
-        <!-- Intro.js ¿y AES? deben cargarse desde local porque no se les puede direccionar por internet (cdn)-->
-        
-        
         <script src="js/min/AES.min.js"></script>
         <script src="js/min/angular.min.js"></script>
         <script src="js/min/angular-animate.min.js"></script>
@@ -73,37 +53,14 @@
         <script src="js/min/ui-bootstrap-tpls-0.13.0.min.js"></script>
         <script type="text/javascript" src="js/angular-ui-tree.js"></script>
         <script src="js/min/angular-sanitize.min.js"></script>
-        
-        
-        <!--Libreria necesaria para la fecha del DatePicker-->
-        
-        <!--BOOTSTRAP Se usa para los estilos y la paginacion de listar referencias-->
-        
 		<!-- endbuild -->       
         
 		<!-- build:JS -->
         <script src="utils.js"></script>
-		
         <script src="services.js"></script>
 		<script src="app.js"></script>    
-		<script src="config.js"></script>        
+		<script src="config.js"></script>
         <script src="modulos/login/controladorLogin.js"></script>
-        <script src="modulos/altaUsuario/controladorAltaUsuario.js"></script>
-        <script src="modulos/buscarReferencias/controladorBuscarReferencias.js"></script>
-        <script src="modulos/nuevaReferencia/controladorNuevaReferencia.js"></script>
-        <script src="modulos/modificarReferencia/controladorModificarReferencia.js"></script>
-        <script src="modulos/validarReferencia/controladorValidarReferencia.js"></script>
-        <script src="modulos/bienvenida/controladorBienvenida.js"></script>
-        <script src="modulos/popUp/controladorUsuarioLogueado.js"></script>
-        <script src="modulos/popUp/controladorErroresReferencia.js"></script>
-        <script src="modulos/popUp/controladorRechazarReferencia.js"></script>
-        <script src="modulos/popUp/controladorCrearTec.js"></script>
-        <script src="modulos/listarReferenciasValidar/controladorListarReferenciasValidar.js"></script>
-        <script src="modulos/gestionTecnologias/controladorGestionTecnologias.js"></script>
 		<!-- endbuild -->
-		
-        
-
-
 	</body>
 </html> 

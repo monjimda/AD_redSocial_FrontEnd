@@ -1,0 +1,26 @@
+<div id="contenedorLogin">     
+    <fieldset id="superior">
+        <div id="contenido">
+            <md-input-container flex>
+              <label>Usuario</label>
+              <input ng-keypress="intro($event)" ng-model="user.nick" type="text" name="nick" autofocus="autofocus" required>
+            </md-input-container>
+            <br>
+            <md-input-container flex>
+              <label>Contraseña</label>
+            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+            <p>{{error}}</p>
+        </div>
+    </fieldset>
+    
+    <fieldset id="inferior">
+        <md-button class="btn-primary" ng-click="login()">Entrar</md-button>  
+        <md-checkbox  type="checkbox" ng-model="recordar">Recordarme</md-checkbox>
+    </fieldset>
+</div>
+ 
+          
+        
+
+

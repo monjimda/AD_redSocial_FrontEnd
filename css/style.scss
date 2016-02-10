@@ -23,12 +23,12 @@ time, mark, audio, video {
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block; 
-}
+} 
 
 /*CSS Global Variables*/
 $colorOscuro: #242424;
 $colorClaro: #ececec;
-$colorDetalles: #ee941a;
+$colorDetalles: #337ab7;
 $colorSombreado: #D8D8D8;
 $colorError: #CE0000;
 
@@ -921,7 +921,7 @@ md-toolbar:not(.md-menu-toolbar) {
 }
 
 md-checkbox.md-checked .md-icon {
-    background-color: #ee941a;
+    background-color: $colorDetalles;
 }
 
 .btn {

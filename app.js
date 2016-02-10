@@ -124,37 +124,9 @@ app.config(function($routeProvider) {
 		templateUrl: 'modulos/login/login.html',
         controller: 'controladorLogin'
 	})
-    .when('/alta', {
-        templateUrl: 'modulos/altaUsuario/altaUsuario.html',
-        controller: 'controladorAltaUsuario'
-    })
-    .when('/buscarReferencias', {
-        templateUrl: 'modulos/buscarReferencias/buscarReferencias.html',
-        controller: 'controladorBuscarReferencias'
-    })
-    .when('/nueva', {
-        templateUrl: 'modulos/nuevaReferencia/nuevaReferencia.html',
-        controller: 'controladorNuevaReferencia'
-    })
-    .when('/validarReferencia', {
-        templateUrl: 'modulos/validarReferencia/validarReferencia.html',
-        controller: 'controladorValidarReferencia'
-    })
-    .when('/modificarReferencia', {
-        templateUrl: 'modulos/modificarReferencia/modificarReferencia.html',
-        controller: 'controladorModificarReferencia'
-    })
-    .when('/listarReferenciasValidar', {
-        templateUrl: 'modulos/listarReferenciasValidar/listarReferenciasValidar.html',
-        controller: 'controladorListarReferenciasValidar'
-    })
     .when('/bienvenida', {
         templateUrl: 'modulos/bienvenida/bienvenida.html',
         controller: 'controladorBienvenida'
-    })
-    .when('/gestionTecnologias', {
-        templateUrl: 'modulos/gestionTecnologias/gestionTecnologias.html',
-        controller: 'controladorGestionTecnologias'
     })
 	.when('/pageNotFound', {
 		templateUrl: 'modulos/error/templateError.html'
