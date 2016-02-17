@@ -23,7 +23,50 @@
 		<header>
             <img id="logoSharon" src="/nicolas_cage.jpg"/>
         </header>
-        <!--div ng-show="menu" id="menu" layout layout-sm="column" ng-include="'./modulos/menu/menu.html'"></div-->
+        <md-menu-bar>
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              File
+            </button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('share', $event)">
+                  Share...
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                <md-menu>
+                  <md-button ng-click="$mdOpenMenu()">New</md-button>
+                  <md-menu-content>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Presentation', $event)">Presentation</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Form', $event)">Form</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Drawing', $event)">Drawing</md-button></md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('Open', $event)">
+                  Open...
+                  <span class="md-alt-text"> {{ 'M-O' | keyboardShortcut }}</span>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button disabled="disabled" ng-click="ctrl.sampleAction('Rename', $event)">
+                  Rename
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                <md-button ng-click="ctrl.sampleAction('Print', $event)">
+                  Print
+                  <span class="md-alt-text">{{ 'M-P' | keyboardShortcut }}</span>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
         <div ng-view>            
 		</div>
         <footer>
@@ -38,7 +81,7 @@
         
         <!-- locales minificados-->
         <script src="js/min/AES.min.js"></script>
-        <script src="js/min/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
         <script src="js/min/angular-animate.min.js"></script>
         <script src="js/min/angular-aria.min.js"></script>
         <script src="js/min/angular-messages.min.js"></script>
@@ -61,6 +104,7 @@
 		<script src="app.js"></script>    
 		<script src="config.js"></script>
         <script src="modulos/login/controladorLogin.js"></script>
+        <script src="modulos/inicio/controladorInicio.js"></script>
 		<!-- endbuild -->
 	</body>
 </html> 

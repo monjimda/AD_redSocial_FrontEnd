@@ -86,12 +86,6 @@ app.run(function(servicioRest, utils, $rootScope, $http, $location, $mdDialog) {
         $rootScope.menuReferenciasNueva = false;
         $rootScope.menuReferenciasGestion = false;
         $rootScope.menuReferenciasListar = false;
-        $rootScope.menuUsuarios = false;
-        $rootScope.menuUsuariosAlta = false;
-        $rootScope.menuUsuariosGestion = false;
-        $rootScope.menuTecnologias = false;
-        $rootScope.menuGestionTecnologias = false;
-        $rootScope.referenciaCargada = null;
     }
     
     function limpiarStorage(storage) {
@@ -110,7 +104,7 @@ app.run(function(servicioRest, utils, $rootScope, $http, $location, $mdDialog) {
     $rootScope.$on('$locationChangeStart', function(event, next, current) {
 
         if ($rootScope.usuarioLS===undefined || $rootScope.usuarioLS === {}) {
-            $location.path('/');
+            //$location.path('/'); //TODO: VOLVER A PONER ESTA MIERDA ACTIVA
         }
     });
 
@@ -124,9 +118,9 @@ app.config(function($routeProvider) {
 		templateUrl: 'modulos/login/login.html',
         controller: 'controladorLogin'
 	})
-    .when('/bienvenida', {
-        templateUrl: 'modulos/bienvenida/bienvenida.html',
-        controller: 'controladorBienvenida'
+    .when('/inicio', {
+        templateUrl: 'modulos/inicio/inicio.html',
+        controller: 'controladorInicio'
     })
 	.when('/pageNotFound', {
 		templateUrl: 'modulos/error/templateError.html'

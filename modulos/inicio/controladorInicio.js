@@ -1,4 +1,4 @@
-app.controller('controladorLogin', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
+app.controller('controladorInicio', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
     $scope.user={        
         nick:'',
         password:'' 
@@ -26,9 +26,6 @@ app.controller('controladorLogin', function(servicioRest, config, $scope, $http,
     }
     
     function login(){
-        $location.path('/inicio');
-                //Mostramos el menú
-                $rootScope.menu = true;
         servicioRest.postLogin($scope.user)
 			.then(function(data) {
                 $rootScope.usuarioLS={
