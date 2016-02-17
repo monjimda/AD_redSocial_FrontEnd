@@ -8,7 +8,7 @@ connect = require('gulp-connect');
 
 gulp.task('default', ['info']);
 
-gulp.task('server', function() {
+gulp.task('poderoso', function() {
 	console.log("Arrancamos el server");
 	connect.server({
 		port: 80,

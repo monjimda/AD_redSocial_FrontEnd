@@ -26,9 +26,8 @@ app.controller('controladorLogin', function(servicioRest, config, $scope, $http,
     }
     
     function login(){
-        $location.path('/inicio');
-                //Mostramos el menú
-                $rootScope.menu = true;
+        $location.path("/inicio");
+        $rootScope.menu=true;
         servicioRest.postLogin($scope.user)
 			.then(function(data) {
                 $rootScope.usuarioLS={

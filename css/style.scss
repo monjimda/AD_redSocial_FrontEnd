@@ -160,6 +160,7 @@ header {
 header #logoSharon {
     max-height: 100%;
     min-height: 100%;
+    width: 600px;
     display: block;
     margin: auto;
 }
@@ -208,12 +209,11 @@ footer #lineaFooter{
 
 /* --------------------------- ESTILOS MENÚ ---------------------- */
 #menu{
-    width:45%;
+    width:100%;
     height: auto;
-    color: $colorOscuro;
+    color: white;
     overflow:hidden; 
     background: $colorDetalles;
-    border-radius: 0 0 20px 0 ;
     box-shadow: 1px 1px 1px 1px #777;  
 }
 .textoHipervinculo {

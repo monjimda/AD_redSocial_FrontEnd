@@ -136,10 +136,11 @@ header {
 header #logoSharon {
   max-height: 100%;
   min-height: 100%;
+  width: 600px;
   display: block;
   margin: auto; }
 
-/* line 166, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+/* line 167, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer {
   width: 100%;
   overflow: hidden;
@@ -150,7 +151,7 @@ footer {
   clear: both;
   min-height: 50px; }
 
-/* line 176, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+/* line 177, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer #logoGfi {
   /*width: 5%;
     min-width: 5%;*/
@@ -160,7 +161,7 @@ footer #logoGfi {
   margin-top: 5px;
   margin-left: 9px; }
 
-/* line 185, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+/* line 186, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer nav a {
   float: right;
   display: inline-block;
@@ -172,12 +173,12 @@ footer nav a {
   -o-transition: all 500ms ease;
   transition: all 500ms ease; }
 
-/* line 196, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+/* line 197, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer nav a:hover {
   background: #337ab7;
   border-radius: 50px; }
 
-/* line 200, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+/* line 201, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer #lineaFooter {
   box-shadow: 1px 1px 1px 1px #777;
   background: #337ab7;
@@ -187,14 +188,13 @@ footer #lineaFooter {
   position: fixed; }
 
 /* --------------------------- ESTILOS MENÚ ---------------------- */
-/* line 210, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+/* line 211, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #menu {
-  width: 45%;
+  width: 100%;
   height: auto;
-  color: #242424;
+  color: white;
   overflow: hidden;
   background: #337ab7;
-  border-radius: 0 0 20px 0;
   box-shadow: 1px 1px 1px 1px #777; }
 
 /* line 219, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */

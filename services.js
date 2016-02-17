@@ -40,7 +40,7 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
         
 		return llamadaHTTP({
            method: 'POST',
-			url: url + '/login ',
+			url: url + '/login',
 			data: usuario
 	   });
 	}
