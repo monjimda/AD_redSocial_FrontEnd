@@ -1,4 +1,4 @@
-app.controller('controladorLogin', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
+app.controller('controladorRegistro', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
     $scope.user={        
         nick:'',
         password:'' 

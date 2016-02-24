@@ -24,18 +24,10 @@ function utils($rootScope, $mdDialog){
                 $rootScope.menuReferenciasGestion = true;
                 $rootScope.menuReferenciasNueva = true;
                 $rootScope.menuReferenciasListar = true;
-            }else if(rol === "ROLE_VALIDADOR"){
+            }else if(rol === "ROLE_USER"){
                 $rootScope.menuReferencias = true;
                 $rootScope.menuReferenciasGestion = true;
                 $rootScope.menuReferenciasListar = true;
-            }else if(rol === "ROLE_CONSULTOR"){
-                $rootScope.menuReferencias = true;
-                $rootScope.menuReferenciasListar = true;
-            }else if(rol === "ROLE_MANTENIMIENTO"){ 
-                $rootScope.menuReferencias = true;
-                $rootScope.menuReferenciasGestion = true;
-                $rootScope.menuReferenciasListar = true;
-                $rootScope.menuReferenciasNueva = true;
             }
 
             

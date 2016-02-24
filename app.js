@@ -118,6 +118,10 @@ app.config(function($routeProvider) {
 		templateUrl: 'modulos/login/login.html',
         controller: 'controladorLogin'
 	})
+    .when('/registro', {
+        templateUrl: 'modulos/registro/registro.html',
+        controller: 'controladorRegistro'
+    })
     .when('/inicio', {
         templateUrl: 'modulos/inicio/inicio.html',
         controller: 'controladorInicio'

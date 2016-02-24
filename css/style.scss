@@ -214,7 +214,6 @@ footer #lineaFooter{
     color: white;
     overflow:hidden; 
     background: $colorDetalles;
-    box-shadow: 1px 1px 1px 1px #777;  
 }
 .textoHipervinculo {
     color:$colorOscuro;
@@ -286,14 +285,11 @@ footer #lineaFooter{
     font-size: 15px;  
 }
 
-#contenedorLogin #superior {
+#contenedorRegistro {
+    width: 50%;
+    height: 100%;
+    margin-left: 25%;
 	background-color: $colorClaro;
-    color: #777;
-    margin-bottom: 14px;
-	-webkit-border-radius:20px 20px 0 0 ;
-    -moz-border-radius: 20px 20px 0 0;
-	border-radius:  20px 20px 0 0;
-	padding: 20px 26px;
     box-shadow: 2px 2px 4px 2px #666;     
 }
 
@@ -315,21 +311,19 @@ footer #lineaFooter{
 	color: #fff;
 	font-size: 12px;
 	padding: 20px 26px;
-    box-shadow: 2px 2px 4px 2px #666; 
+    box-shadow: 2px 2px 4px 2px #666;
+    margin-bottom: 8%;
 }
 
-#inferior p{ 
-    margin-top: 15px;
-    float: right;
-   
-}
-
-#inferior #bt{ 
-    margin-top: 10px;
-    margin-left: 50px;
-    float: left; 
-}
 
 #cbLogin{
     left: 37%;
+}
+
+#registro{
+    margin-left: 30%;
+}
+
+md-checkbox.md-checked .md-icon {
+    background-color: $colorDetalles;
 }
