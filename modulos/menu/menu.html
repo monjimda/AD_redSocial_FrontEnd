@@ -1,10 +1,16 @@
 <data md-toolbar class="md-menu-toolbar">
     <md-menu>
-        <a id="menu" href="#/alta"><md-button id="UsuariosBotonMenu">Inicio</md-button></a>
+        <a id="menu" href="#/inicio"><md-button id="UsuariosBotonMenu">Inicio</md-button></a>
     </md-menu>
     <md-menu>
-        <md-button id="referenciasBotonMenu" ng-click="$mdOpenMenu()">Mi Perfil</md-button>
+        <a id="menu" href="#/perfil"><md-button id="referenciasBotonMenu">Mi Perfil</md-button></a>
+    </md-menu>
+    <md-menu>
+        <md-button id="tecnologiasBotonMenu" ng-click="$mdOpenMenu()">Fotos</md-button>
         <md-menu-content>
+            <md-menu-item ng-show="menuGestionTecnologias">
+                <a id="gestionTecnologiasBotonMenu" class="textoHipervinculo" href="#/gestionTecnologias"><md-button>Gestión</md-button></a>
+            </md-menu-item>
             <md-menu-item ng-show="menuReferenciasListar">
                 <a   id="listarReferenciasBotonMenu"class="textoHipervinculo" href="#/listarReferenciasValidar"><md-button>Tablon</md-button></a>
             </md-menu-item>
@@ -14,14 +20,6 @@
             </md-menu-item>
             <md-menu-item ng-show="menuReferenciasGestion">
                 <a class="textoHipervinculo" href="#/buscarReferencias"><md-button>Buscar</md-button></a>
-            </md-menu-item>
-        </md-menu-content>
-    </md-menu>
-    <md-menu>
-        <md-button id="tecnologiasBotonMenu" ng-click="$mdOpenMenu()">Fotos</md-button>
-        <md-menu-content>
-            <md-menu-item ng-show="menuGestionTecnologias">
-                <a id="gestionTecnologiasBotonMenu" class="textoHipervinculo" href="#/gestionTecnologias"><md-button>Gestión</md-button></a>
             </md-menu-item>
         </md-menu-content>
     </md-menu>
