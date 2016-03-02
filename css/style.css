@@ -312,4 +312,10 @@ footer #lineaFooter {
 md-checkbox.md-checked .md-icon {
   background-color: #337ab7; }
 
+/* --------------------------- ESTILOS INICIO ----------------------------- */
+/* line 333, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+#mensajeInicio {
+  text-align: center;
+  font-size: -webkit-xxx-large; }
+
 /*# sourceMappingURL=style.css.map */
