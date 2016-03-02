@@ -1,71 +1,80 @@
 <div id="contenedorRegistro">     
     <fieldset id="camposRegistro">
-        <md-input-container flex>
-            <label>Nick</label>
-            <input ng-keypress="intro($event)" ng-model="user.nick" type="text" name="nick" autofocus="autofocus" required>
-        </md-input-container>
         
-        <md-input-container flex>
-            <label>Nombre</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
+        <div class="cabeceraRegistro">Datos obligatorios</div>
         
-        <md-input-container flex>
-            <label>Apellidos</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
+        <div class="contenidoRegistro">
+            <md-input-container flex>
+                <label>Nick</label>
+                <input ng-keypress="intro($event)" ng-model="user.nick" type="text" name="nick" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Nombre</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Apellidos</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>email</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Contraseña</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Repita su contraseña</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+        </div>
         
-        <md-input-container flex>
-            <label>email</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
+        <div class="cabeceraRegistro">Datos opcionales</div>
         
-        <md-input-container flex>
-            <label>Contraseña</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
-        
-        <md-input-container flex>
-            <label>Repita su contraseña</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
-        
-        <md-input-container flex>
-            <label>Ciudad</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
-        
-        <md-input-container flex>
-            <label>Direccion</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
-        
-        <md-input-container flex>
-            <label>Trabajo</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
-        
-        <md-input-container flex>
-            <label>Carrera</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
-        
-        <md-input-container flex>
-            <label>Fecha nacimiento</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
-        
-        <md-input-container flex>
-            <label>Educacion superior</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
-        
-        <md-input-container flex>
-            <label>Educacion inferior</label>
-            <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
-        </md-input-container>
-        
+        <div class="contenidoRegistro">
+            <md-input-container flex>
+                <label>Ciudad</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Direccion</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Trabajo</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Carrera</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Fecha nacimiento</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Educacion superior</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Educacion inferior</label>
+                <input ng-keypress="intro($event)" ng-model="user.password" type="password" name="pwd" autofocus="autofocus" required>
+            </md-input-container>
+        </div>
         <p>{{error}}</p>
+        <md-button class="btn-primary" ng-click="registrarse()">Registrarse</md-button>
     </fieldset>
 </div>
  

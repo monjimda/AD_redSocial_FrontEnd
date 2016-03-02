@@ -27,8 +27,8 @@ footer, header, hgroup, menu, nav, section {
 
 /*CSS Global Variables*/
 $colorOscuro: #242424;
-$colorClaro: #ececec;
-$colorDetalles: #337ab7;
+$colorGris: #ececec;
+$colorPrincipal: #337ab7;
 $colorSombreado: #D8D8D8;
 $colorError: #CE0000;
 
@@ -124,7 +124,7 @@ $colorHojaInvalida: #F43636;
 
 
 :focus {
-    outline: $colorDetalles auto 5px;
+    outline: $colorPrincipal auto 5px;
 }
 
 body {
@@ -152,7 +152,7 @@ body {
 header {
     width:auto;
     min-width: 20%;
-    height: 10%;
+    height: 7%;
     overflow:hidden; 
     background: $colorOscuro;
     box-shadow: 1px 1px 1px 1px #777;
@@ -160,7 +160,7 @@ header {
 header #logoSharon {
     max-height: 100%;
     min-height: 100%;
-    width: 600px;
+    //width: 600px;
     display: block;
     margin: auto;
 }
@@ -170,9 +170,9 @@ footer {
     background: $colorOscuro;
     position: fixed;  
     bottom: 0px;
-    height: 7%;
+    height: 5%;
     clear:both;
-    min-height: 50px;
+    //min-height: 50px;
 }
 footer #logoGfi {
     /*width: 5%;
@@ -186,7 +186,7 @@ footer #logoGfi {
 footer nav a {
     float: right;
     display: inline-block;
-    color: $colorDetalles;
+    color: $colorPrincipal;
     padding: 2% 2%;
     line-height: normal;
     font-size: 11px;
@@ -195,12 +195,12 @@ footer nav a {
     transition: all 500ms ease; 
     }
 footer nav a:hover {
-    background: $colorDetalles;
+    background: $colorPrincipal;
     border-radius:50px;
 }
 footer #lineaFooter{
     box-shadow: 1px 1px 1px 1px #777;
-    background: $colorDetalles;
+    background: $colorPrincipal;
     bottom: 0px;
     height:4px;
     width:100%;
@@ -213,14 +213,14 @@ footer #lineaFooter{
     height: auto;
     color: white;
     overflow:hidden; 
-    background: $colorDetalles;
+    background: $colorPrincipal;
 }
 .textoHipervinculo {
     color:$colorOscuro;
     text-decoration:none;
 }
 .textoHipervinculo:hover {
-    color:$colorDetalles;
+    color:$colorPrincipal;
     text-decoration:none;
     width:100%;    
 }
@@ -252,7 +252,7 @@ footer #lineaFooter{
     color: #ee941a;
 }
 .botonesApp{
-    background-color: $colorDetalles;
+    background-color: $colorPrincipal;
     font-size: 13px;
     text-align: center; 
 }
@@ -261,7 +261,7 @@ footer #lineaFooter{
     height: 90px;
     border-radius: 20px 20px 20px 20px;
     box-shadow: 2px 2px 2px 2px #777; 
-    background-color: $colorClaro;  
+    background-color: $colorGris;  
 }
 .contenedorVistas{
     margin-top: 0.2%;
@@ -283,14 +283,6 @@ footer #lineaFooter{
 	width: 400px;
     font-family: sans-serif;
     font-size: 15px;  
-}
-
-#contenedorRegistro {
-    width: 50%;
-    height: 100%;
-    margin-left: 25%;
-	background-color: $colorClaro;
-    box-shadow: 2px 2px 4px 2px #666;     
 }
 
 #contenedorLogin #superior #contenido{
@@ -315,15 +307,45 @@ footer #lineaFooter{
     margin-bottom: 8%;
 }
 
-
 #cbLogin{
     left: 37%;
 }
+
+
+
+md-checkbox.md-checked .md-icon {
+    background-color: $colorPrincipal;
+}
+
+/* --------------------------- ESTILOS REGISTRO ----------------------------- */
 
 #registro{
     margin-left: 30%;
 }
 
-md-checkbox.md-checked .md-icon {
-    background-color: $colorDetalles;
+#contenedorRegistro {
+    width: 70%; 
+    height: 100%;
+    margin-left: 13.5%;
+	background-color: $colorGris;
+    box-shadow: 2px 2px 4px 2px #666;     
 }
+
+.cabeceraRegistro{
+    border-bottom: 3px solid;
+    display: block;
+    border-color: $colorPrincipal;
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 3%;
+    padding-left: 5%;
+    padding-bottom: 1%;
+    font-size: x-large;
+    color: $colorPrincipal;
+}
+
+.contenidoRegistro{
+    padding-left: 5%;
+}
+
+
