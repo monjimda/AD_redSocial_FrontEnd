@@ -4,10 +4,11 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
         console.log("hola");
         document.getElementById('botonFileReal').click();//.then({
             //console.log("hola");
-            //document.getElementById("fotoPerfil").setAttribute("src",$scope.referencia.imagenProyecto)
+            document.getElementById("fotoPerfil").setAttribute("src",$scope.referencia.imagenProyecto)
         //});
         
     }
+    
     
 });
 
