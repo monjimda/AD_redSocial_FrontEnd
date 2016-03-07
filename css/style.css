@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* line 14, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 14, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,7 +21,7 @@ time, mark, audio, video {
   vertical-align: baseline; }
 
 /* HTML5 display-role reset for older browsers */
-/* line 24, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 24, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block; }
@@ -29,32 +29,32 @@ footer, header, hgroup, menu, nav, section {
 /*CSS Global Variables*/
 /*medias querys*/
 @media screen and (max-width: 1250px) {
-  /* line 42, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 42, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .iconosMenu {
     margin-left: 10% !important; } }
 
 @media screen and (max-width: 1185px) {
-  /* line 47, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 47, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .iconosMenu {
     margin-left: 5% !important; } }
 
 @media screen and (max-width: 1130px) {
-  /* line 53, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 53, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .iconosMenu {
     margin-left: 0 !important; } }
 
 @media screen and (max-width: 1075px) {
-  /* line 59, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 59, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .md-button {
     margin-right: 0;
     margin-left: 0;
     font-size: 15px; }
-  /* line 64, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 64, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .iconosMenu {
     margin-left: 6% !important; } }
 
 @media screen and (max-width: 1040px) {
-  /* line 70, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 70, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .iconosMenu {
     margin-left: 0 !important; } }
 
@@ -64,46 +64,46 @@ footer, header, hgroup, menu, nav, section {
     }
 }*/
 @media screen and (max-width: 970px) {
-  /* line 82, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 82, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .md-button {
     font-size: 12px; } }
 
 @media screen and (max-width: 875px) {
-  /* line 88, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 88, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .iconosMenu {
     width: 1px !important; } }
 
 @media screen and (max-width: 835px) {
-  /* line 96, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 96, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .md-button {
     font-size: 13px; }
-  /* line 99, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 99, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   #menu {
     width: 80% !important;
     background-color: black; }
-  /* line 103, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 103, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .iconosMenu {
     margin-left: 30% !important; } }
 
 @media screen and (max-width: 700px) {
-  /* line 109, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 109, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   #menu {
     width: 100% !important;
     border-radius: 0 !important; } }
 
 @media screen and (max-width: 700px) {
-  /* line 116, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 116, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .contenedorVistas {
     width: 80%; }
-  /* line 119, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+  /* line 119, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
   .botonesCrear {
     margin-bottom: 50px; } }
 
-/* line 126, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 126, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 :focus {
   outline: #337ab7 auto 5px; }
 
-/* line 130, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 130, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 body {
   line-height: 1;
   font-size: 13px;
@@ -112,18 +112,18 @@ body {
   font-family: verdana;
   overflow: hidden; }
 
-/* line 139, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 139, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .error {
   margin-left: 2%;
   color: crimson; }
 
 /* -------------------- Contenedor de las vistas de la pagina (ng-view) ---------------------- */
-/* line 145, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 145, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #contenedorVistas {
   height: 75%; }
 
 /* ------------------------------- CABECERA Y PIE ---------------------- */
-/* line 152, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 152, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 header {
   width: auto;
   min-width: 20%;
@@ -132,14 +132,14 @@ header {
   background: #242424;
   box-shadow: 1px 1px 1px 1px #777; }
 
-/* line 160, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 160, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 header #logoSharon {
   max-height: 100%;
   min-height: 100%;
   display: block;
   margin: auto; }
 
-/* line 167, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 167, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer {
   width: 100%;
   overflow: hidden;
@@ -149,7 +149,7 @@ footer {
   height: 5%;
   clear: both; }
 
-/* line 177, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 177, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer #logoGfi {
   /*width: 5%;
     min-width: 5%;*/
@@ -159,7 +159,7 @@ footer #logoGfi {
   margin-top: 5px;
   margin-left: 9px; }
 
-/* line 186, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 186, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer nav a {
   float: right;
   display: inline-block;
@@ -171,12 +171,12 @@ footer nav a {
   -o-transition: all 500ms ease;
   transition: all 500ms ease; }
 
-/* line 197, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 197, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer nav a:hover {
   background: #337ab7;
   border-radius: 50px; }
 
-/* line 201, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 201, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 footer #lineaFooter {
   box-shadow: 1px 1px 1px 1px #777;
   background: #337ab7;
@@ -186,7 +186,7 @@ footer #lineaFooter {
   position: fixed; }
 
 /* --------------------------- ESTILOS MENÚ ---------------------- */
-/* line 211, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 211, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #menu {
   width: 100%;
   height: auto;
@@ -194,22 +194,22 @@ footer #lineaFooter {
   overflow: hidden;
   background: #337ab7; }
 
-/* line 218, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 218, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .textoHipervinculo {
   color: #242424;
   text-decoration: none; }
 
-/* line 222, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 222, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .textoHipervinculo:hover {
   color: #337ab7;
   text-decoration: none;
   width: 100%; }
 
-/* line 227, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 227, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .iconoLogout {
   margin-left: 200%; }
 
-/* line 230, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 230, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .iconosMenu {
   width: 10px;
   height: 25px;
@@ -218,13 +218,13 @@ footer #lineaFooter {
   cursor: pointer; }
 
 /* --------------------------- ESTILOS BIENVENIDA ---------------------- */
-/* line 240, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 240, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #bienvenida {
   text-align: center;
   margin-top: 300px; }
 
 /* --------------------------- ESTILOS COMUNES ----------------------------- */
-/* line 247, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 247, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .cabeceraPagina {
   margin-right: 25px;
   text-align: right;
@@ -232,13 +232,13 @@ footer #lineaFooter {
   height: 40px;
   color: #ee941a; }
 
-/* line 254, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 254, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .botonesApp {
   background-color: #337ab7;
   font-size: 13px;
   text-align: center; }
 
-/* line 259, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 259, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #dialogLogueado {
   width: 90px;
   height: 90px;
@@ -246,21 +246,21 @@ footer #lineaFooter {
   box-shadow: 2px 2px 2px 2px #777;
   background-color: #ececec; }
 
-/* line 266, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 266, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .contenedorVistas {
   margin-top: 0.2%;
   overflow: auto;
   overflow-x: hidden;
   height: 700px; }
 
-/* line 272, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 272, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .contenedorVistasAyuda {
   margin-top: 0.2%;
   overflow: initial;
   height: 700px; }
 
 /* --------------------------- ESTILOS LOGIN ----------------------------- */
-/* line 280, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 280, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #contenedorLogin {
   margin: 50px auto;
   margin-top: 150px;
@@ -268,17 +268,17 @@ footer #lineaFooter {
   font-family: sans-serif;
   font-size: 15px; }
 
-/* line 288, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 288, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #contenedorLogin #superior #contenido {
   margin-left: 20px; }
 
-/* line 292, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 292, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #contenedorLogin #superior p {
   text-align: center;
   color: red;
   font-size: 11px; }
 
-/* line 298, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 298, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #contenedorLogin #inferior {
   background-color: #242424;
   -webkit-border-radius: 0 0 20px 20px;
@@ -290,20 +290,20 @@ footer #lineaFooter {
   box-shadow: 2px 2px 4px 2px #666;
   margin-bottom: 8%; }
 
-/* line 310, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 310, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #cbLogin {
   left: 37%; }
 
-/* line 316, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 316, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 md-checkbox.md-checked .md-icon {
   background-color: #337ab7; }
 
 /* --------------------------- ESTILOS REGISTRO ----------------------------- */
-/* line 322, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 322, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #registro {
   margin-left: 30%; }
 
-/* line 326, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 326, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #contenedorRegistro {
   width: 70%;
   height: 100%;
@@ -311,7 +311,7 @@ md-checkbox.md-checked .md-icon {
   background-color: #ececec;
   box-shadow: 2px 2px 4px 2px #666; }
 
-/* line 334, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 334, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .cabeceraRegistro {
   border-bottom: 3px solid;
   display: block;
@@ -324,14 +324,27 @@ md-checkbox.md-checked .md-icon {
   font-size: x-large;
   color: #337ab7; }
 
-/* line 347, C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_FrontEnd/css/style.scss */
+/* line 347, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 .contenidoRegistro {
   padding-left: 5%; }
 
+/* line 351, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+md-checkbox.md-checked .md-icon {
+  background-color: #337ab7; }
+
+/* line 355, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+#botonRegistro {
+  margin-left: 45%; }
+
 /* --------------------------- ESTILOS INICIO ----------------------------- */
-/* line 333, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+/* line 361, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
 #mensajeInicio {
   text-align: center;
   font-size: -webkit-xxx-large; }
+
+/* --------------------------- ESTILOS PERFIL ----------------------------- */
+/* line 368, C:/Users/alumno/Documents/AD_redSocial_FrontEnd/css/style.scss */
+#fotoPerfil {
+  width: 15%; }
 
 /*# sourceMappingURL=style.css.map */

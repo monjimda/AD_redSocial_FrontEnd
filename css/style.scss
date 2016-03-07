@@ -339,7 +339,7 @@ md-checkbox.md-checked .md-icon {
     margin-left: 2%;
     margin-top: 3%;
     padding-left: 5%;
-    padding-bottom: 1%;
+    padding-bottom: 1%; 
     font-size: x-large;
     color: $colorPrincipal;
 }
@@ -349,7 +349,11 @@ md-checkbox.md-checked .md-icon {
 }
 
 md-checkbox.md-checked .md-icon {
-    background-color: $colorDetalles;
+    background-color: $colorPrincipal;
+}
+
+#botonRegistro{
+    margin-left: 45%;
 }
 
 /* --------------------------- ESTILOS INICIO ----------------------------- */
@@ -358,3 +362,15 @@ md-checkbox.md-checked .md-icon {
         text-align: center;
         font-size: -webkit-xxx-large;
 }
+
+/* --------------------------- ESTILOS PERFIL ----------------------------- */
+
+#fotoPerfil{
+    width: 15%;
+}
+
+
+
+
+
+

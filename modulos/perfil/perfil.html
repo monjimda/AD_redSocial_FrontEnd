@@ -1,6 +1,15 @@
 <div>
-    <a><input type="file"><img src="nicolas_cage.jpg"></a>
-    <p id="mensajeInicio">Bienvenido, {{usuario}}</p>
+    <input type="file"
+           name="userfile"
+           style="display:none;"
+           ng-model="referencia.imagenProyecto"
+           id="botonFileReal"
+           onchange="angular.element(this).scope().uploadFile(this)"
+           ng-required>
+    <img id="fotoPerfil"
+           onclick="subirFoto()"
+         src="nicolas_cage.jpg"
+           tabindex="17">
 </div>
  
           
