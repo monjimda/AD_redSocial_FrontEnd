@@ -1,9 +1,9 @@
 <data md-toolbar class="md-menu-toolbar">
     <md-button>
-        <a id="menu" href="#/inicio"><md-button id="UsuariosBotonMenu">Inicio</md-button></a>
+        <a id="menu" href="#/inicio">Inicio</a>
     </md-button>
     <md-button>
-        <a id="menu" href="#/perfil"><md-button id="referenciasBotonMenu">Mi Perfil</md-button></a>
+        <a id="menu" href="#/perfil">Mi Perfil</a>
     </md-button>
     <md-menu>
         <md-button id="tecnologiasBotonMenu" ng-click="$mdOpenMenu()">Fotos</md-button>
@@ -23,7 +23,9 @@
             </md-menu-item>
         </md-menu-content>
     </md-menu>
+    <input ng-model="user.title">
 </data>
+
 <div layout="row" class="iconosMenu">
     <ng-md-icon id="iconoAyuda" title="ayuda" icon="live_help" style="fill: #242424" size="25" ng-click="lanzarAyuda()"></ng-md-icon>
     <ng-md-icon id="iconoDatos" title="Usuario registrado" icon="account_box" style="fill: #242424" size="25" ng-click="datosUsuarioLogueado()"></ng-md-icon>

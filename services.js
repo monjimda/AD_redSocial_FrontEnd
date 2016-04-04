@@ -171,7 +171,7 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
         
        return llamadaHTTP({
 			method: 'POST',
-			url: url + '/usuarios',
+			url: url + '/usuario',
 			data: usuario
 		});
 

@@ -1,6 +1,6 @@
 function utils($rootScope, $mdDialog){
     
-    function popupInfo(ev,descripcion){    
+    function popupInfo(descripcion){    
         $mdDialog.show(
             $mdDialog.alert()
             .parent(angular.element(document.querySelector('#popupContainer')))
@@ -9,7 +9,6 @@ function utils($rootScope, $mdDialog){
             .htmlContent(descripcion)
             .ariaLabel('Alert Dialog Demo')
             .ok('Aceptar')
-            .targetEvent(ev)
         );
     }
     

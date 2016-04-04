@@ -2,17 +2,13 @@
     <input type="file"
            name="userfile"
            style="display:none;"
-           ng-model="referencia.imagenProyecto"
+           ng-model="imagenPerfil"
            id="botonFileReal"
-           onchange="angular.element(this).scope().uploadFile(this)"
+           onchange="angular.element(this).scope().hola()"
            ng-required>
     <img id="fotoPerfil"
            ng-click="subirFoto()"
-         src="nicolas_cage.jpg"
+       src="#"
            tabindex="17">
+    <a ng-href="{{prueba}}" download>Download image</a>
 </div>
- 
-          
-        
-
-

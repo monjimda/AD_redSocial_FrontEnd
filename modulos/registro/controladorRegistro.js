@@ -1,85 +1,33 @@
-app.controller('controladorRegistro', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
-    $scope.user={        
-        nick:'',
-        password:'' 
-    };
+app.controller('controladorRegistro', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog, utils) {
     
-	$scope.login = function () {
+   $scope.title = "";
+   $scope.descripcion = "";
+    var self = this,  j= 0, counter = 0;
+    $scope.mensaje='';
+    $scope.activado = self.activated;
+    
+    
+    $scope.crear = function (evento) {
+        if($scope.user.password === $scope.passwordRepetida){
+        var mensaje='';
+console.log($scope.user.fechaCumpleanios);
+            servicioRest.postUsuario($scope.user)
+            .then(function(data) {
+                $scope.mensaje='Usuario creado con éxito';
+                utils.popupInfo('Usuario creado con éxito');
+                $location.path('/');
+            })
+            .catch(function(err) {
+                utils.popupInfo('Error al registrar usuario');
+            });
+
+        }else{
+            utils.popupInfo('La contraseña no coincide');
+        }
         
-       if($scope.user.nick!="" && $scope.user.password!="" && $scope.user.nick!=undefined && $scope.user.password!=undefined){
-           login();   
-       }else{
-            $scope.error="Debe de completar los dos campos";
-       }
     };
-    
-    $scope.intro = function (pressEvent){
-        //Si presiona intro para acceder
-        if(pressEvent.keyCode == 13){ 
-            login();   
-          }
-    };
-    
-    //Comprobamos que el LocalStorage tenga datos
-    if(localStorage.getItem("nick")!==null || sessionStorage.getItem("nick")!==null){
-       $location.path("/inicio");
-    }
-    
-    function login(){
-        servicioRest.postLogin($scope.user)
-			.then(function(data) {
-                $rootScope.usuarioLS={
-                    nick:$scope.user.nick,
-                    password:$scope.user.password,
-                    role:data.role,
-                    name:data.name
-                };
-            
-                //Redireccionamos al usuario a la página de bienvenida
-                $location.path('/inicio');
-                //Mostramos el menú
-                $rootScope.menu = true;
-            
-                $http.defaults.headers.common['Authorization'] = 'Basic ' + btoa($rootScope.usuarioLS.nick + ':' + $rootScope.usuarioLS.password);
-                
-                //Si el usuario ha pulsado recordar guardamos
-                comprobarRecordar();
+        
+});    
+	
 
-			})
-			.catch(function(err) {
-             //Tratamos el error.
-                if(err=="Credenciales erróneas"){
-                    $scope.error="Contraseña incorrecta.";
-                    
-                }else if(err=="User not found in DB"){
-                    $scope.error="El usuario no está registrado.";
-                    $rootScope.user={        
-                        nick:'',
-                        password:'' 
-                    };
-                }
-			});    
-    };
     
-    function rellenarStorage(storage){
-        storage.setItem("nick", $rootScope.usuarioLS.nick);
-        // Usamos el nick del usuario como secreto
-        storage.setItem("password", Aes.Ctr.encrypt($rootScope.usuarioLS.password, $rootScope.usuarioLS.nick, 256));
-        storage.setItem("role", $rootScope.usuarioLS.role);
-        storage.setItem("name", $rootScope.usuarioLS.name);
-    }
-    
-    function comprobarRecordar(){ 
-
-        if($scope.recordar){
-            rellenarStorage(localStorage);
-        }
-        else{
-            rellenarStorage(sessionStorage);
-        }
-    }
-    
-});
-
-
-
