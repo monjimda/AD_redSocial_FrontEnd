@@ -1,30 +1,11 @@
-<data md-toolbar class="md-menu-toolbar">
-    <md-button>
-        <a id="menu" href="#/inicio">Inicio</a>
-    </md-button>
-    <md-button>
-        <a id="menu" href="#/perfil">Mi Perfil</a>
-    </md-button>
-    <md-menu>
-        <md-button id="tecnologiasBotonMenu" ng-click="$mdOpenMenu()">Fotos</md-button>
-        <md-menu-content>
-            <md-menu-item ng-show="menuGestionTecnologias">
-                <a id="gestionTecnologiasBotonMenu" class="textoHipervinculo" href="#/gestionTecnologias"><md-button>Gestión</md-button></a>
-            </md-menu-item>
-            <md-menu-item ng-show="menuReferenciasListar">
-                <a   id="listarReferenciasBotonMenu"class="textoHipervinculo" href="#/listarReferenciasValidar"><md-button>Tablon</md-button></a>
-            </md-menu-item>
-            <md-menu-divider></md-menu-divider>  
-            <md-menu-item ng-show="menuReferenciasNueva">
-                <a id="nuevaReferenciasBotonMenu"class="textoHipervinculo" href="#/nueva" ng-click="actualizarTitulo()"><md-button>Nueva</md-button></a>
-            </md-menu-item>
-            <md-menu-item ng-show="menuReferenciasGestion">
-                <a class="textoHipervinculo" href="#/buscarReferencias"><md-button>Buscar</md-button></a>
-            </md-menu-item>
-        </md-menu-content>
-    </md-menu>
+<div id="botonesMenu" md-toolbar class="md-menu-toolbar">
+
+        <a  href="#/inicio" class="btn">Inicio</a>
+
+        <a  href="#/perfil" class="btn">Mi Perfil</a>
+    <a  href="#/perfil" class="btn">Fotos</a>
     <input ng-model="user.title">
-</data>
+</div>
 
 <div layout="row" class="iconosMenu">
     <ng-md-icon id="iconoAyuda" title="ayuda" icon="live_help" style="fill: #242424" size="25" ng-click="lanzarAyuda()"></ng-md-icon>

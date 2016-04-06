@@ -227,12 +227,23 @@ footer #lineaFooter{
 .iconoLogout {
     margin-left: 200%; 
 }
-.iconosMenu {
-    width: 10px;
-    height: 25px;
-    margin-top: 2%; 
-    margin-left: 15%;
-    cursor: pointer;
+.btn {
+    padding: 3%;
+    color: white;
+}
+
+#botonesMenu{
+    width: 35%;
+        margin-left: 3%;
+}
+/* input     margin-left: 20%;*/
+.refBoton{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
 }
 
 /* --------------------------- ESTILOS BIENVENIDA ---------------------- */
