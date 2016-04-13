@@ -130,6 +130,10 @@ app.config(function($routeProvider) {
         templateUrl: 'modulos/perfil/perfil.html',
         controller: 'controladorPerfil'
     })
+    .when('/fotos', {
+        templateUrl: 'modulos/perfil/perfil.html',
+        controller: 'controladorPerfil'
+    })
 	.when('/pageNotFound', {
 		templateUrl: 'modulos/error/templateError.html'
 	})
