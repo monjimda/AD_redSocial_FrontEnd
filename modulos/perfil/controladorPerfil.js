@@ -1,5 +1,6 @@
 app.controller('controladorPerfil', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
-    document.getElementById("fotoPerfil").setAttribute('src',"nicolas_cage.jpg");
+    document.getElementById("fotoPerfil").setAttribute('src',"http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg");
+    $scope.prueba="http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg";
     var reader=new FileReader();
     $scope.hola=function(){
         
@@ -23,5 +24,5 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
     }
     //$scope.prueba="http://www.doralnewsonline.com/doralfinal/wp-content/uploads/2015/10/new-and-old-google-logos.jpg";
     
-    
+    /*------------------- PROYECTO DEMO DE CHAT CON WEBSOCKETS https://github.com/socketio/socket.io/tree/master/examples/chat -------------------*/
 });
