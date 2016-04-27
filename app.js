@@ -42,11 +42,13 @@ app.controller('controladorMenu', function(){
     }
 
     function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
+      console.log("texto");
+        console.log(text);
     }
 
     function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
+      console.log("item");
+        console.log(item);
     }
 
     /**
