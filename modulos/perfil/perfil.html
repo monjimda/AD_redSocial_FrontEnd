@@ -12,7 +12,7 @@
            tabindex="17">
     <a ng-href="{{prueba}}" download>Download image</a>
     
-    <script type="text/ng-template" id="nodes_renderer.html">
+   <script type="text/ng-template" id="nodes_renderer.html">
 
     <div ui-tree-handle class="{{node.clase}} tree-node tree-node-content" ng-click="seleccionarElemento(this, node)" id="{{node.nombre}}">
         <a class="btn btn-success btn-xs flechaAyuda" ng-if="node.nodosHijos && node.nodosHijos.length > 0" data-nodrag ng-click="toggle(this)">
@@ -22,7 +22,8 @@
                     'glyphicon-chevron-down': !collapsed}">
             </span>
           </a>
-        {{node.nombre}}
+        <div ng-if="node.tipo==='nodo'">{{node.nombre}}</div>
+        <div ng-if="node.tipo==='hoja'"><input type="text"></div>
         <a class="pull-right btn btn-danger btn-xs borrarAyuda"
            data-nodrag
            ng-click="eliminarElem($event, this)"
@@ -113,5 +114,7 @@
         </div>
     </div>
 </div>
+
+
 
 </div>
