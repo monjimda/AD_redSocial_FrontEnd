@@ -1,28 +1,6 @@
-app.controller('controladorPerfil', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
-    servicioRest.getImagen()
-    .then(function(data) {
-        console.log(data);
-        for(var i=0;i<data.length;i++){
-            if(true){
-                document.getElementById("fotoPerfil").setAttribute('src',"http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg");
-                $scope.prueba="http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg";//DOWNLOAD BUTTON
-                data.split(i);//ELIMINAMOS EL DE PERFIL PARA DEJAR EL RESTO
-            }
-        }
-        
-        $scope.fotos=data;
-        
-        console.log("imagen dev");
-        
-    })
-    .catch(function(err) {
-     //Tratamos el error.
-
-    console.log("error");
-    });  
-    
-        /*document.getElementById("fotoPerfil").setAttribute('src',"http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg");
-    $scope.prueba="http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg";//DOWNLOAD BUTTON*/
+app.controller('controladorPerfilVisita', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
+        document.getElementById("fotoPerfil").setAttribute('src',"http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg");
+    $scope.prueba="http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg";
     var reader=new FileReader();
     $scope.hola=function(){
         
@@ -34,30 +12,6 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
                 document.getElementById("fotoPerfil").setAttribute('src', e.target.result);
 };
             reader.readAsDataURL(document.getElementById("botonFileReal").files[0]);
-        console.log(document.getElementById("botonFileReal").files[0]);
-        var fileReader = new FileReader();
-            
-            if(undefined!=document.getElementById("botonFileReal").files[0]){
-                
-                var imagen = document.getElementById("botonFileReal").files[0];
-                fileReader.readAsBinaryString(imagen);
-                fileReader.onloadend = function(e)
-                {
-                    var objeto = e.target.result;
-                    objeto = btoa(objeto);
-                    servicioRest.postImagen(objeto, true)
-                        .then(function(data) {
-                            console.log("imagen guardada");
-
-                        })
-                        .catch(function(err) {
-                         //Tratamos el error.
-
-                        console.log("error");
-                        });    
-                 }
-                
-            }
         
     }
     $scope.subirFoto = function (){
@@ -66,7 +20,6 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
             //console.log("hola");
             //document.getElementById("fotoPerfil").setAttribute("src",$scope.referencia.imagenProyecto)
         //});
-        
         
     }
     //$scope.prueba="http://www.doralnewsonline.com/doralfinal/wp-content/uploads/2015/10/new-and-old-google-logos.jpg";

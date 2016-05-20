@@ -28,6 +28,7 @@ app.controller('controladorLogin', function(servicioRest, config, $scope, $http,
     function login(){
         servicioRest.postLogin($scope.user)
 			.then(function(data) {
+            $rootScope.nickLogueado= $scope.user.nick;
                 $rootScope.usuarioLS={
                     nick:$scope.user.nick,
                     password:$scope.user.password,

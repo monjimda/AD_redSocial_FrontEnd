@@ -12,15 +12,6 @@
            tabindex="17">
     <a ng-href="{{prueba}}" download>Download image</a>
     
-    
-    <tr ng-repeat="foto in fotos" ng-click="abrirReferenciaPendiente($index, referencias)">
-        <img id="fotoPerfil"
-           ng-click="subirFoto()"
-       src="{{foto.imagen}}">
-        <a ng-href="{{foto.imagen}}" download>Download image</a>
-      </tr>
-    
-    
    <script type="text/ng-template" id="nodes_renderer.html">
 
     <div ui-tree-handle class="{{node.clase}} tree-node tree-node-content" ng-click="seleccionarElemento(this, node)" id="{{node.nombre}}">

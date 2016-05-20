@@ -2,7 +2,7 @@
 var app = angular.module('ref', ['ngRoute','ngMaterial','ngMdIcons','ngMessages','ja.qr','ui.bootstrap','angular-intro','ui.tree','ngSanitize']);
 
 
-app.controller('controladorMenu', function(servicioRest){
+app.controller('controladorMenu', function(servicioRest,$location,$rootScope){
     console.log("HOLAA");
     var self = this;
 
@@ -10,7 +10,7 @@ app.controller('controladorMenu', function(servicioRest){
     self.isDisabled    = false;
 
     // list of `state` value/display objects
-    self.states        = loadAll();
+    loadAll();
     self.querySearch   = querySearch;
     self.selectedItemChange = selectedItemChange;
     self.searchTextChange   = searchTextChange;
@@ -50,6 +50,11 @@ app.controller('controladorMenu', function(servicioRest){
     function selectedItemChange(item) {
       console.log("item");
         console.log(item);
+        if(item!=undefined){
+            $rootScope.perfilVisitar=item.value;
+            $location.path("/perfilVisita");
+            console.log("redirec");
+        }
     }
 
     /**
@@ -64,7 +69,7 @@ app.controller('controladorMenu', function(servicioRest){
                 for(var i=0; i<data.length;i++){
                     nickUsers[i]=data[i].nick;
                 }
-                usuarios=nickUsers.map( function (state) {
+                self.states=nickUsers.map( function (state) {
                     console.log(state);
                     console.log(state);
                     return {
@@ -72,6 +77,7 @@ app.controller('controladorMenu', function(servicioRest){
                       display: state
                     };
                   });
+            console.log("aaeesgs",usuarios);
 
             
 			})
@@ -236,6 +242,10 @@ app.config(function($routeProvider) {
     .when('/perfil', {
         templateUrl: 'modulos/perfil/perfil.html',
         controller: 'controladorPerfil'
+    })
+    .when('/perfilVisita', {
+        templateUrl: 'modulos/perfilVisita/perfilVisita.html',
+        controller: 'controladorPerfilVisita'
     })
     .when('/fotos', {
         templateUrl: 'modulos/perfil/perfil.html',
