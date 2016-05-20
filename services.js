@@ -57,6 +57,15 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
 		});
 
 	}
+    
+    function getPersonas() {
+        
+		return llamadaHTTP({
+			method: 'GET',
+			url: url + '/usuarios'
+		});
+
+	}
 
 	function getReferencias() {
         
@@ -309,6 +318,7 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
         postLogin : postLogin,
         rechazarTecnologia: rechazarTecnologia,
         getReferenciasAsociadas: getReferenciasAsociadas,
-        deletePowerfull: deletePowerfull
+        deletePowerfull: deletePowerfull,
+        getPersonas: getPersonas
 	}
 }

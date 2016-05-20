@@ -2,7 +2,7 @@
 var app = angular.module('ref', ['ngRoute','ngMaterial','ngMdIcons','ngMessages','ja.qr','ui.bootstrap','angular-intro','ui.tree','ngSanitize']);
 
 
-app.controller('controladorMenu', function(){
+app.controller('controladorMenu', function(servicioRest){
     console.log("HOLAA");
     var self = this;
 
@@ -30,6 +30,7 @@ app.controller('controladorMenu', function(){
      * remote dataservice call.
      */
     function querySearch (query) {
+        console.log("afsef",self.states);
       var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
           deferred;
       if (self.simulateQuery) {
@@ -55,20 +56,42 @@ app.controller('controladorMenu', function(){
      * Build `states` list of key/value pairs
      */
     function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
+        var usuarios;
+        servicioRest.getPersonas()
+			.then(function(data) {
+                console.log(data);
+            var nickUsers=[];
+                for(var i=0; i<data.length;i++){
+                    nickUsers[i]=data[i].nick;
+                }
+                usuarios=nickUsers.map( function (state) {
+                    console.log(state);
+                    console.log(state);
+                    return {
+                      value: state.toLowerCase(),
+                      display: state
+                    };
+                  });
 
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
+            
+			})
+			.catch(function(err) {
+             //Tratamos el error.
+                if(err=="Credenciales erróneas"){
+                    $scope.error="Contraseña incorrecta.";
+                    
+                }else if(err=="User not found in DB"){
+                    $scope.error="El usuario no está registrado.";
+                    $rootScope.user={        
+                        nick:'',
+                        password:'' 
+                    };
+                }
+			});
+        console.log("aqui",usuarios);
+        return usuarios;
+
+      
     }
 
     /**
