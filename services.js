@@ -74,7 +74,7 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
 		return llamadaHTTP({
            method: 'POST',
 			url: url + '/amigos/pendientes',
-            data:{idUsuario: nick}
+            data: nick
 	   });
 	}
     
@@ -83,7 +83,7 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
 		return llamadaHTTP({
            method: 'POST',
 			url: url + '/amigos',
-            data:{idUsuario: nick}
+            data:nick
 	   });
 	}
 

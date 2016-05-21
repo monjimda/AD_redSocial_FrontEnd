@@ -3,6 +3,7 @@ app.controller('controladorInicio', function(servicioRest, config, $scope, $http
     
     servicioRest.getPeticionesPendientes()
     .then(function(datos) {
+        console.log("peticionespend",datos);
         $scope.peticiones=datos;
     })
     .catch(function(err) {
