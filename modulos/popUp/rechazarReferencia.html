@@ -1,0 +1,19 @@
+    <md-dialog id="fotoDialog" aria-label="Datos del Usuario" >
+        <md-toolbar>
+          <div class="dialogCabecera">
+            <h1>Subir una foto</h1> 
+          </div>
+        </md-toolbar>
+        <md-dialog-content >
+
+              <input type="file"
+                     id="ficheroFoto"
+           name="userfile"
+           ng-model="imagenPerfil"
+           ng-required>
+              <div class="botonesRechazar">
+                  <md-button class="botonesApp" ng-click="subirFoto()">Subir</md-button>
+                  <md-button class="botonesApp" ng-click="cancel()">Cancelar</md-button>
+              </div>
+        </md-dialog-content>
+    </md-dialog>  

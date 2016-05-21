@@ -1,17 +1,21 @@
 app.controller('controladorPerfil', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
     servicioRest.getImagen()
     .then(function(data) {
-        console.log(data);
+        console.log("fotos",data);
         for(var i=0;i<data.length;i++){
-            if(true){
-                document.getElementById("fotoPerfil").setAttribute('src',"http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg");
-                $scope.prueba="http://www.zuliapordentro.com/wp-content/uploads/2016/02/new-google-logo.jpg";//DOWNLOAD BUTTON
-                data.split(i);//ELIMINAMOS EL DE PERFIL PARA DEJAR EL RESTO
+            data[i]=data[i].substring(data[i].indexOf("FrontEnd/") + 9)
+            if (data[i].toLowerCase().indexOf("perfil") >= 0){
+                document.getElementById("fotoPerfil").setAttribute('src',data[i]);
+                console.log(data[i].substring(data[i].indexOf("FrontEnd/") + 9));
+                $scope.prueba=data[i];//DOWNLOAD BUTTON
+                data.splice(i,1);//ELIMINAMOS EL DE PERFIL PARA DEJAR EL RESTO
+                
             }
         }
+        console.log("fotos",data);
         
         $scope.fotos=data;
-        
+        $scope.fotos=["imagenes/a/perfil.png", "C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_BackEnd/imagenes/a/null.png"];
         console.log("imagen dev");
         
     })
@@ -69,6 +73,66 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
         
         
     }
+    
+    $scope.subirUnaFoto = function () {
+        
+        subirUnaFotoPopUp(event);
+        
+        //cambiamos el estado de la referencia a 'borrador'
+        
+    }
+    
+    subirUnaFotoPopUp = function(ev) {
+        $mdDialog.show({
+            controller: 'controladorRechazarReferencia',
+            templateUrl: 'modulos/popUp/rechazarReferencia.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: false
+        })
+        .then(function(ficheroFoto) {
+            
+            var reader = new FileReader();
+            
+            reader.readAsDataURL(ficheroFoto);
+        console.log(ficheroFoto);
+        var fileReader = new FileReader();
+            
+            if(undefined!=ficheroFoto){
+                
+                var imagen = ficheroFoto;
+                fileReader.readAsBinaryString(imagen);
+                fileReader.onloadend = function(e)
+                {
+                    var objeto = e.target.result;
+                    objeto = btoa(objeto);
+                    servicioRest.postImagen(objeto, false)
+                        .then(function(data) {
+                            console.log("imagen guardada");
+
+                        })
+                        .catch(function(err) {
+                         //Tratamos el error.
+
+                        console.log("error");
+                        });    
+                 }
+                
+            }
+                 
+            })
+        .catch(function(err) {
+                utils.popupInfo('',"Error al rechazar la referencia.");
+                console.log("Error al rechazar la referencia");
+            });
+    };
+    
+    $scope.verFoto = function (self){
+    window.open(self.foto);
+        console.log(self.foto);
+        
+    }
+    
     //$scope.prueba="http://www.doralnewsonline.com/doralfinal/wp-content/uploads/2015/10/new-and-old-google-logos.jpg";
     
     /*------------------- PROYECTO DEMO DE CHAT CON WEBSOCKETS https://github.com/socketio/socket.io/tree/master/examples/chat -------------------*/

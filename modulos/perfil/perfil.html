@@ -12,13 +12,21 @@
            tabindex="17">
     <a ng-href="{{prueba}}" download>Download image</a>
     
+    <md-button id="rechazar"
+       class="botonesApp"
+       type="button"
+       ng-click="subirUnaFoto()"
+       tabindex="22">Subir foto</md-button>
     
-    <tr ng-repeat="foto in fotos" ng-click="abrirReferenciaPendiente($index, referencias)">
+    <md-list>
+      <md-subheader class="md-no-sticky">3 line item</md-subheader>
+      <md-list-item class="md-3-line" ng-repeat="foto in fotos">
         <img id="fotoPerfil"
-           ng-click="subirFoto()"
-       src="{{foto.imagen}}">
-        <a ng-href="{{foto.imagen}}" download>Download image</a>
-      </tr>
+           ng-click="verFoto(this)"
+            ng-src="{{foto}}">
+        <a ng-href="{{foto}}" download>Download image</a>
+      </md-list-item>
+    </md-list>
     
     
    <script type="text/ng-template" id="nodes_renderer.html">
