@@ -65,7 +65,7 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
         
 		return llamadaHTTP({
            method: 'GET',
-			url: url + '/amigos/visitar/'
+			url: url + '/amigos/pendientes'
 	   });
 	}
     
@@ -73,8 +73,8 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
         
 		return llamadaHTTP({
            method: 'POST',
-			url: url + '/amigos/visitar/',
-            data:{nick: nick}
+			url: url + '/amigos/pendientes',
+            data:{idUsuario: nick}
 	   });
 	}
     
@@ -82,8 +82,8 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
         
 		return llamadaHTTP({
            method: 'POST',
-			url: url + '/amigos/visitar/',
-            data:{nick: nick}
+			url: url + '/amigos',
+            data:{idUsuario: nick}
 	   });
 	}
 
@@ -126,7 +126,14 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
 
     }
     
-    
+    function getTecnologias() {
+        
+	   return llamadaHTTP({
+			method: 'GET',
+			url: url + '/tecnologias'
+		});
+
+	}
  
 		
 	return {
@@ -139,6 +146,7 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
         enviarPeticion: enviarPeticion,
         aceptarPeticion: aceptarPeticion,
         getPeticionesPendientes: getPeticionesPendientes,
-        getPersonas: getPersonas
+        getPersonas: getPersonas,
+        getTecnologias: getTecnologias
 	}
 }

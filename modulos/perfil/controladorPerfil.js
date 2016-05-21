@@ -188,10 +188,11 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
 		);
 	}
        
-    /*servicioRest.getTecnologias().then(
+    servicioRest.getTecnologias().then(
         function (response) {
+            console.log("tablon",response);
             actualizarArbol(response);
-        });*/
+        });
     
     function actualizarArbol(arbol){                               
             recorrerArbol(arbol);                        

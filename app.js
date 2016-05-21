@@ -54,9 +54,12 @@ app.controller('controladorMenu', function(servicioRest,$location,$rootScope){
             
             servicioRest.getEsAmigo(item.value)
             .then(function(data) {
+                $rootScope.idPerfilVisitar=item.value;
                 $rootScope.esAmigo=data;
                 servicioRest.getUsuarioVisitar(item.value)
                 .then(function(data) {
+                    console.log($rootScope.esAmigo);
+                    console.log(data);
                     $rootScope.perfilVisitar=data;
                     $location.path("/perfilVisita");
                     console.log("redirec");

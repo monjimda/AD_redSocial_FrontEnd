@@ -1,14 +1,13 @@
 app.controller('controladorPerfilVisita', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
-    $rootScope.esAmigo=3;
-    if($rootScope.esAmigo===1){
+    if($rootScope.esAmigo===0){
         $scope.mensajePeticion="No eres amigo de este usuario, si quieres ver su perfil enviale una peticion de amistad";
-    }else if($rootScope.esAmigo===2){
+    }else if($rootScope.esAmigo===1){
         $scope.mensajePeticion="No eres amigo de este usuario, debes esperar a que acepte tu invitacion";
     }
     
     $scope.aniadirAmigo = function () {
-        
-        servicioRest.aniadirAmigo()
+        console.log($rootScope.idPerfilVisitar);
+        servicioRest.enviarPeticion($rootScope.idPerfilVisitar)
         .then(function(data) {
             
         
@@ -22,7 +21,7 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
         //cambiamos el estado de la referencia a 'borrador'
         
     }
-    if($rootScope.perfilVisitar!=null){//CAMBIAR RESULT Y DATA POR PERFILVISITAR.ALGO
+    if($rootScope.esAmigo===3){//CAMBIAR RESULT Y DATA POR PERFILVISITAR.ALGO
         
         console.log("fotos pre",result);
         var data=angular.copy(result);
