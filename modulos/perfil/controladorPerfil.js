@@ -1,21 +1,28 @@
 app.controller('controladorPerfil', function(servicioRest, config, $scope, $http, $location, $rootScope, $mdDialog) {
     servicioRest.getImagen()
-    .then(function(data) {
-        console.log("fotos",data);
+    .then(function(result) {
+        
+        console.log("fotos pre",result);
+        var data=angular.copy(result);
         for(var i=0;i<data.length;i++){
-            data[i]=data[i].substring(data[i].indexOf("FrontEnd/") + 9)
+            console.log(i,data.length);
+            data[i]=data[i].substring(data[i].indexOf("FrontEnd/") + 9);
+            
             if (data[i].toLowerCase().indexOf("perfil") >= 0){
-                document.getElementById("fotoPerfil").setAttribute('src',data[i]);
-                console.log(data[i].substring(data[i].indexOf("FrontEnd/") + 9));
-                $scope.prueba=data[i];//DOWNLOAD BUTTON
-                data.splice(i,1);//ELIMINAMOS EL DE PERFIL PARA DEJAR EL RESTO
+                var elemEliminar=i;
                 
             }
         }
-        console.log("fotos",data);
+        
+        document.getElementById("fotoPerfil").setAttribute('src',data[elemEliminar]);
+                console.log(data[elemEliminar].substring(data[elemEliminar].indexOf("FrontEnd/") + 9));
+                $scope.prueba=data[elemEliminar];//DOWNLOAD BUTTON
+                data.splice(elemEliminar,1);//ELIMINAMOS EL DE PERFIL PARA DEJAR EL RESTO
+        
+        console.log("fotos despues",data);
         
         $scope.fotos=data;
-        $scope.fotos=["imagenes/a/perfil.png", "C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_BackEnd/imagenes/a/null.png"];
+        //$scope.fotos=["imagenes/a/perfil.png", "C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_BackEnd/imagenes/a/null.png"];
         console.log("imagen dev");
         
     })
@@ -109,6 +116,36 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
                     servicioRest.postImagen(objeto, false)
                         .then(function(data) {
                             console.log("imagen guardada");
+                            
+                            servicioRest.getImagen()
+                            .then(function(result) {
+
+                                console.log("fotos pre",result);
+                                var data=angular.copy(result);
+                                for(var i=0;i<data.length;i++){
+                                    console.log(i,data.length);
+                                    data[i]=data[i].substring(data[i].indexOf("FrontEnd/") + 9);
+
+                                    if (data[i].toLowerCase().indexOf("perfil") >= 0){
+                                        var elemEliminar=i;
+
+                                    }
+                                }
+
+                                        data.splice(elemEliminar,1);//ELIMINAMOS EL DE PERFIL PARA DEJAR EL RESTO
+
+                                console.log("fotos despues",data);
+
+                                $scope.fotos=data;
+                                //$scope.fotos=["imagenes/a/perfil.png", "C:/Users/Alejandro/Desktop/Curso 15_16/AD/AD_redSocial_BackEnd/imagenes/a/null.png"];
+                                console.log("imagen dev");
+
+                            })
+                            .catch(function(err) {
+                             //Tratamos el error.
+
+                            console.log("error");
+                            });
 
                         })
                         .catch(function(err) {

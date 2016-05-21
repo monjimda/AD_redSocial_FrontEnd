@@ -149,6 +149,10 @@ body {
 
 /* ------------------------------- CABECERA Y PIE ---------------------- */
 
+body{
+    overflow: auto;
+}
+
 header {
     width:auto;
     min-width: 20%;

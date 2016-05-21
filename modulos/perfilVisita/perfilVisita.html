@@ -1,16 +1,21 @@
-<div>
-    <input type="file"
-           name="userfile"
-           style="display:none;"
-           ng-model="imagenPerfil"
-           id="botonFileReal"
-           onchange="angular.element(this).scope().hola()"
-           ng-required>
+<div ng-if="esAmigo!=3">
+    <p>{{mensajePeticion}}</p>
+    <md-button type="button" ng-disabled="esAmigo==2"  ng-click="aniadirAmigo()">Añadir amigo</md-button>
+</div>
+<div ng-if="esAmigo==3">
+    
     <img id="fotoPerfil"
-           ng-click="subirFoto()"
        src="#"
            tabindex="17">
-    <a ng-href="{{prueba}}" download>Download image</a>
+    
+    <md-list>
+      <md-subheader class="md-no-sticky">3 line item</md-subheader>
+      <md-list-item class="md-3-line" ng-repeat="foto in fotos">
+        <img id="fotoPerfil"
+           ng-click="verFoto(this)"
+            ng-src="{{foto}}">
+      </md-list-item>
+    </md-list>
     
    <script type="text/ng-template" id="nodes_renderer.html">
 

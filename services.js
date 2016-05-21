@@ -45,7 +45,47 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
 	   });
 	}
     
-
+    function getEsAmigo(nick) {
+        
+		return llamadaHTTP({
+           method: 'GET',
+			url: url + '/amigos/' + nick
+	   });
+	}
+    
+    function getUsuarioVisitar(nick) {
+        
+		return llamadaHTTP({
+           method: 'GET',
+			url: url + '/amigos/visitar/' + nick
+	   });
+	}
+    
+    function getPeticionesPendientes() {
+        
+		return llamadaHTTP({
+           method: 'GET',
+			url: url + '/amigos/visitar/'
+	   });
+	}
+    
+    function enviarPeticion(nick) {
+        
+		return llamadaHTTP({
+           method: 'POST',
+			url: url + '/amigos/visitar/',
+            data:{nick: nick}
+	   });
+	}
+    
+    function aceptarPeticion(nick) {
+        
+		return llamadaHTTP({
+           method: 'POST',
+			url: url + '/amigos/visitar/',
+            data:{nick: nick}
+	   });
+	}
 
     function postImagen(imagen, perfil) {
         var datos={imagen: imagen, perfil:perfil}
@@ -94,6 +134,11 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
         postLogin : postLogin,
         postImagen:postImagen,
         getImagen:getImagen,
+        getEsAmigo: getEsAmigo,
+        getUsuarioVisitar: getUsuarioVisitar,
+        enviarPeticion: enviarPeticion,
+        aceptarPeticion: aceptarPeticion,
+        getPeticionesPendientes: getPeticionesPendientes,
         getPersonas: getPersonas
 	}
 }

@@ -1,3 +1,11 @@
 <div id="contenedorLogin">  
     <p id="mensajeInicio">Bienvenido, {{usuario}}</p>
+    
+    <md-list>
+      <md-subheader class="md-no-sticky">Peticiones de amistad</md-subheader>
+      <md-list-item class="md-3-line" ng-repeat="peticion in peticiones">
+        <p>{{peticion}} te ha enviado una peticion de amistad</p>
+        <md-button type="button" ng-click="aceptarPeticion(peticion)">Aceptar amistad</md-button>
+      </md-list-item>
+    </md-list>
 </div>

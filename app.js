@@ -51,9 +51,28 @@ app.controller('controladorMenu', function(servicioRest,$location,$rootScope){
       console.log("item");
         console.log(item);
         if(item!=undefined){
-            $rootScope.perfilVisitar=item.value;
-            $location.path("/perfilVisita");
-            console.log("redirec");
+            
+            servicioRest.getEsAmigo(item.value)
+            .then(function(data) {
+                $rootScope.esAmigo=data;
+                servicioRest.getUsuarioVisitar(item.value)
+                .then(function(data) {
+                    $rootScope.perfilVisitar=data;
+                    $location.path("/perfilVisita");
+                    console.log("redirec");
+                })
+                .catch(function(err) {
+                 //Tratamos el error.
+
+                console.log("error");
+                });
+            })
+            .catch(function(err) {
+             //Tratamos el error.
+
+            console.log("error");
+            });
+            
         }
     }
 
