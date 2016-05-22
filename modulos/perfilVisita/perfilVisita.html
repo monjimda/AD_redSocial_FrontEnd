@@ -2,6 +2,7 @@
     <p>{{mensajePeticion}}</p>
     <md-button type="button" ng-disabled="esAmigo==1"  ng-click="aniadirAmigo()">Añadir amigo</md-button>
 </div>
+<p class="cabeceraPagina">Perfil de {{idPerfilVisitar}}</p>
 <div ng-if="esAmigo==2">
     
     <img id="fotoPerfil"
@@ -19,7 +20,7 @@
     
    <script type="text/ng-template" id="nodes_renderer.html">
 
-    <div ui-tree-handle class="{{node.clase}} tree-node tree-node-content" ng-click="seleccionarElemento(this, node)" id="{{node.nombre}}">
+    <div ui-tree-handle class="{{node.clase}} tree-node tree-node-content" ng-click="seleccionarElemento(this, node)" data-nodrag id="{{node.nombre}}">
         <a class="btn btn-success btn-xs flechaAyuda" ng-if="node.nodosHijos && node.nodosHijos.length > 0" data-nodrag ng-click="toggle(this)">
             <span class="glyphicon"
                 ng-class="{
@@ -27,11 +28,11 @@
                     'glyphicon-chevron-down': !collapsed}">
             </span>
           </a>
-        {{node.nombre}}
+        <span ng-if="node.clase!='raiz'" class="negrita">{{node.tipo}} dice: </span>{{node.nombre}}
         <a class="pull-right btn btn-danger btn-xs borrarAyuda"
            data-nodrag
            ng-click="eliminarElem($event, this)"
-           ng-if="this.$parentNodeScope != undefined && this.$modelValue.clase != 'hojaInvalida'">
+           ng-if="this.$parentNodeScope != undefined && this.$modelValue.tipo == usuarioLS.nick">
             
             <span class="glyphicon glyphicon-remove"></span>
             <md-tooltip>
@@ -44,30 +45,17 @@
                 Añadir nodo
             </md-tooltip>
         </a>
-        <a class="pull-right btn btn-success btn-xs btnAniadir hojaAyuda" data-nodrag ng-click="aniadirElem($event, this, 'hoja')" style="margin-right: 8px;" ng-if="node.clase=='nodo' || node.clase=='raiz'">
-            <span class="glyphicon glyphicon-plus"></span>
-            <md-tooltip>
-                Añadir hoja
-            </md-tooltip>
-        </a>
     </div>
     <ol ui-tree-nodes="" ng-model="node.nodosHijos" ng-class="{hidden: collapsed}">
         <li ng-repeat="node in node.nodosHijos" ui-tree-node data-nodrop-enabled="node.clase!=='nodo'" ng-include="'nodes_renderer.html'"></li>
     </ol>
 </script>
-<h1 class="cabeceraPagina">Gestión de tecnologías</h1>
 <div class="row">
     <div class="col-sm-6">
         <div ui-tree="eventosArbol" id="tree-root" data-drag-delay="250" >
           <ol ui-tree-nodes ng-model="data">
             <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
           </ol>
-        </div>
-        <div id="leyendaAyuda">
-            <div class="leyenda"><div id="colorRaiz"></div>Raiz</div>
-            <div class="leyenda"><div id="colorNodo"></div>Nodo</div>
-            <div class="leyenda"><div id="colorHoja"></div>Hoja</div>
-            <div class="leyenda"><div id="colorHojaInvalida"></div>Hoja sin validar</div>
         </div>
     </div>
     <div id="contenedorOpciones"  class="col-sm-6">
@@ -76,54 +64,12 @@
                 <div id="ContenedporTipoTecnologiaYNombre">
                     <div id=tituloDatosTecnologia>{{titulo}}</div><br>
                     <md-input-container>
-                        <label>Nombre</label>
+                        <label>Comentario</label>
                         <input ng-keypress="intro($event)" id="nombreTecnologia" type="text"ng-model="nodoSeleccionado.nombre" ng-required="true">
                     </md-input-container>
                 </div>
-                <div id="camposTecnologiasFinales" ng-if="nodoSeleccionado.clase!=='nodo'">
-
-                    <div>
-                        <div id="productoTecnologia">
-                                <md-checkbox id="cBProductoTecnologia" ng-model="nodoSeleccionado.producto">Producto</md-checkbox>
-                            </div>
-                        <md-input-container ng-show="nodoSeleccionado.producto">
-                            
-                            <label>Tipo</label>
-                            <md-select ng-model="nodoSeleccionado.tipo" >
-                              <md-option ng-repeat="tipo in tipos" value="{{tipo}}">
-                                {{tipo}}
-                              </md-option>
-                            </md-select>
-                        
-                        <!--div>
-                            <md-checkbox ng-model="estaValidado" ng-disabled="true">Validado</md-checkbox>
-                        </div-->
-                      </md-input-container>
-                    </div>
-                </div>
                 <md-button id="guardarTecnologia" class="botonesApp" type="button"  ng-click="guardarElem()"
                            ng-disabled="datosNodo.$invalid">Guardar</md-button>
-                <md-button class="botonesApp" ng-show="true && (nodoSeleccionado.clase=='hojaInvalida')" type="button"  ng-click="validarElem()">Validar</md-button>
-                <md-autocomplete class="mozillaAutocompleteTecnologias"
-                                 id="autocompleteTecnologias" 
-                                 ng-show="hayRefAsociadas && (nodoSeleccionado.clase=='hojaInvalida')"
-                                 md-selected-item="clientes.elemSeleccionado"
-                                 md-search-text="clientes.texto"
-                                 md-selected-item-change="selectedItemChange(item, 'cliente')"
-                                 md-items="item in filtrar(clientes.texto, 'cliente') | limitTo : 8"
-                                 md-item-text="item.display"
-                                 md-min-length="3"
-                                 ng-focus="hayError=false"
-                                 placeholder="Asociar a sus referencias a...">
-                    <md-item-template>
-                        <span md-highlight-text="clientes.texto" md-highlight-flags="^i">{{item.display}}</span>
-                    </md-item-template>
-                    <md-not-found>
-                        No se encuenta "{{clientes.texto}}" en la lista.
-                    </md-not-found>
-              </md-autocomplete>
-                <md-button class="botonesApp" ng-show="true && (nodoSeleccionado.clase=='hojaInvalida')" type="button"  ng-click="rechazarElem(hayRefAsociadas)">Rechazar</md-button>
-                <p class="error" ng-show="hayError">Introducir referencia a asociar</p>
             </form>
         </div>
     </div>

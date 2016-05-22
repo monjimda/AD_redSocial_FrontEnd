@@ -159,30 +159,11 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
         }
         
     };
-        
-    function comprobarArbol(nodos, nombreNodo, encontrado){
-        if(nodos.nodosHijos != null){
-            var i=0;
-            while(!encontrado && i<nodos.nodosHijos.length){
-                if(nodos.nodosHijos[i].contenido===nombreNodo){
-                    encontrado=true;
-                }
-                else{
-                    encontrado = comprobarArbol(nodos.nodosHijos[i], nombreNodo, encontrado);
-                }
-                i++;
-            }
-        }
-        return encontrado;
-    };
     
     $scope.guardarElem=function(){
         
-        var nombreRepetido = comprobarArbol($scope.data[0], $scope.nodoSeleccionado.contenido, false);
-        //var nombreRepetido=false;
-        if(!nombreRepetido || (operacion==="editar" && nodeData.contenido===$scope.nodoSeleccionado.contenido)){
             //------------Añadir elemento
-            if(operacion=="anadir"){
+
                 $scope.nodoSeleccionado.propietario=$rootScope.usuarioLS.nick;
                 servicioRest.postComentario(nodeData._id, $scope.nodoSeleccionado, $rootScope.idPerfilVisitar)//el ult es $root.. perfilvisitaid en visita
                 .then(function(data) {
@@ -199,36 +180,10 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
                     utils.popupInfo('',"Error al añadir tecnologia.");
                     console.log("Error al añadir tecnologia");
                 }); 
-            }
+
              //------------Editar elemento
-            else if (operacion=="editar"){
-                var oldId=nodeData.contenido;
-
-
-                servicioRest.putTecnologia(oldId, $scope.nodoSeleccionado)
-                .then(function(data) {
-                    actualizarArbol(data);
-                    getHojasValidadas();
-                    toast("Tecnologia modificada");
-                    /*nodeData.contenido=$scope.nodoSeleccionado.contenido;
-                    if(nodeData.clase!="nodo"){
-                        nodeData.propietario=$scope.nodoSeleccionado.propietario;
-                        nodeData.producto=$scope.nodoSeleccionado.producto;
-                    }*/
-                }).catch(function(err) {
-                    servicioRest.getTablon($rootScope.idPerfilVisitar).then(
-                    function (response) {
-                        actualizarArbol(response);
-                    });
-                    utils.popupInfo('',"Error al editar tecnologia.");
-                    console.log("Error al editar tecnologia");
-                }); 
-            }
             $scope.nodoSeleccionado=null;
-        }
-        else{
-            utils.popupInfo('',"El nombre de la tecnologia ya esta en uso");
-        }
+
     };
     
     

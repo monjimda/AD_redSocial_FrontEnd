@@ -151,11 +151,11 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
     
     
     function deleteComentario(idComentario, duenio) {
-        
+        datos = {id: idComentario, duenio: duenio}
         return llamadaHTTP({
 			method: 'DELETE',
-			url: url + '/tablon/' + id,
-            data: duenio
+			url: url + '/tablon',
+            data: datos
 		});
 
 	}

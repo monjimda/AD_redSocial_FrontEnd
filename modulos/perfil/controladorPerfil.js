@@ -224,7 +224,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
     
     
     $scope.eliminarElem=function(ev, scope){
-        if(true){
+  
             ev.stopImmediatePropagation();
             servicioRest.deleteComentario(scope.$modelValue._id, $rootScope.usuarioLS.nick)
                 .then(function(data) {
@@ -234,17 +234,13 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
 
                 }).catch(function(err) {
                 console.log(err);
-                    utils.popupInfo('',err);
                     console.log("Error al eliminar tecnologia");
                     servicioRest.getTablon($rootScope.usuarioLS.nick).then(
                     function (response) {
                         actualizarArbol(response);
                     });
                 });   
-        }
-        else{
-            utils.popupInfo('',"Error al borrar<br>Hay tecnologias dentro");
-        }
+
     };
     
     $scope.aniadirElem=function(ev, scope, tipoElem){
@@ -281,30 +277,12 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
         }
         
     };
-        
-    function comprobarArbol(nodos, nombreNodo, encontrado){
-        if(nodos.nodosHijos != null){
-            var i=0;
-            while(!encontrado && i<nodos.nodosHijos.length){
-                if(nodos.nodosHijos[i].contenido===nombreNodo){
-                    encontrado=true;
-                }
-                else{
-                    encontrado = comprobarArbol(nodos.nodosHijos[i], nombreNodo, encontrado);
-                }
-                i++;
-            }
-        }
-        return encontrado;
-    };
     
     $scope.guardarElem=function(){
         
-        var nombreRepetido = comprobarArbol($scope.data[0], $scope.nodoSeleccionado.contenido, false);
         //var nombreRepetido=false;
-        if(!nombreRepetido || (operacion==="editar" && nodeData.contenido===$scope.nodoSeleccionado.contenido)){
             //------------Añadir elemento
-            if(operacion=="anadir"){
+     
                 $scope.nodoSeleccionado.propietario=$rootScope.usuarioLS.nick;
                 servicioRest.postComentario(nodeData._id, $scope.nodoSeleccionado, $rootScope.usuarioLS.nick)//el ult es $root.. perfilvisitaid en visita
                 .then(function(data) {
@@ -321,36 +299,10 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
                     utils.popupInfo('',"Error al añadir tecnologia.");
                     console.log("Error al añadir tecnologia");
                 }); 
-            }
-             //------------Editar elemento
-            else if (operacion=="editar"){
-                var oldId=nodeData.contenido;
+       
 
-
-                servicioRest.putTecnologia(oldId, $scope.nodoSeleccionado)
-                .then(function(data) {
-                    actualizarArbol(data);
-                    getHojasValidadas();
-                    toast("Tecnologia modificada");
-                    /*nodeData.contenido=$scope.nodoSeleccionado.contenido;
-                    if(nodeData.clase!="nodo"){
-                        nodeData.propietario=$scope.nodoSeleccionado.propietario;
-                        nodeData.producto=$scope.nodoSeleccionado.producto;
-                    }*/
-                }).catch(function(err) {
-                    servicioRest.getTablon($rootScope.usuarioLS.nick).then(
-                    function (response) {
-                        actualizarArbol(response);
-                    });
-                    utils.popupInfo('',"Error al editar tecnologia.");
-                    console.log("Error al editar tecnologia");
-                }); 
-            }
             $scope.nodoSeleccionado=null;
-        }
-        else{
-            utils.popupInfo('',"El nombre de la tecnologia ya esta en uso");
-        }
+
     };
     
     
