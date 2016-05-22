@@ -29,7 +29,7 @@
     
    <script type="text/ng-template" id="nodes_renderer.html">
 
-    <div ui-tree-handle class="{{node.clase}} tree-node tree-node-content" ng-click="seleccionarElemento(this, node)" id="{{node.nombre}}">
+    <div ui-tree-handle class="{{node.clase}} tree-node tree-node-content" ng-click="seleccionarElemento(this, node)" data-nodrag id="{{node.nombre}}">
         <a class="btn btn-success btn-xs flechaAyuda" ng-if="node.nodosHijos && node.nodosHijos.length > 0" data-nodrag ng-click="toggle(this)">
             <span class="glyphicon"
                 ng-class="{
@@ -37,27 +37,29 @@
                     'glyphicon-chevron-down': !collapsed}">
             </span>
           </a>
-        <div ng-if="node.tipo==='nodo'">{{node.nombre}}</div>
-        <div ng-if="node.tipo==='hoja'"><input type="text"></div>
+        <span ng-if="node.clase!='raiz'" class="negrita">{{node.tipo}} dice: </span>{{node.nombre}}
         <a class="pull-right btn btn-danger btn-xs borrarAyuda"
            data-nodrag
            ng-click="eliminarElem($event, this)"
-           ng-if="this.$parentNodeScope != undefined && this.$modelValue.clase != 'hojaInvalida'">
+           ng-if="this.$parentNodeScope != undefined && this.$modelValue.tipo == usuarioLS.nick">
             
             <span class="glyphicon glyphicon-remove"></span>
+            <md-tooltip>
+                Eliminar tecnologia
+            </md-tooltip>
         </a>
         <a class="pull-right btn btn-primary btn-xs btnAniadirNodo btnAniadir nodoAyuda" data-nodrag ng-click="aniadirElem($event, this, 'nodo')"  ng-if="node.clase=='nodo' || node.clase=='raiz'">
             <span class="glyphicon glyphicon-plus"></span>
-        </a>
-        <a class="pull-right btn btn-success btn-xs btnAniadir hojaAyuda" data-nodrag ng-click="aniadirElem($event, this, 'hoja')" style="margin-right: 8px;" ng-if="node.clase=='nodo' || node.clase=='raiz'">
-            <span class="glyphicon glyphicon-plus"></span>
+            <md-tooltip>
+                Añadir nodo
+            </md-tooltip>
         </a>
     </div>
     <ol ui-tree-nodes="" ng-model="node.nodosHijos" ng-class="{hidden: collapsed}">
         <li ng-repeat="node in node.nodosHijos" ui-tree-node data-nodrop-enabled="node.clase!=='nodo'" ng-include="'nodes_renderer.html'"></li>
     </ol>
 </script>
-<h1 class="cabeceraPagina">Gestion de tecnologias</h1>
+<h1 class="cabeceraPagina">Gestión de tecnologías</h1>
 <div class="row">
     <div class="col-sm-6">
         <div ui-tree="eventosArbol" id="tree-root" data-drag-delay="250" >
@@ -82,30 +84,31 @@
                         <input ng-keypress="intro($event)" id="nombreTecnologia" type="text"ng-model="nodoSeleccionado.nombre" ng-required="true">
                     </md-input-container>
                 </div>
-                <div ng-if="nodoSeleccionado.clase!=='nodo'">
+                <div id="camposTecnologiasFinales" ng-if="nodoSeleccionado.clase!=='nodo'">
 
                     <div>
-                        <md-input-container>
-
-                            <label>Tipo</label>
-                        <md-select ng-model="nodoSeleccionado.tipo" ng-required="true">
-                          <md-option ng-repeat="tipo in tipos" value="{{tipo}}">
-                            {{tipo}}
-                          </md-option>
-                        </md-select>
                         <div id="productoTecnologia">
-                            <md-checkbox id="cBProductoTecnologia" ng-model="nodoSeleccionado.producto">Producto</md-checkbox>
-                        </div>
+                                <md-checkbox id="cBProductoTecnologia" ng-model="nodoSeleccionado.producto">Producto</md-checkbox>
+                            </div>
+                        <md-input-container ng-show="nodoSeleccionado.producto">
+                            
+                            <label>Tipo</label>
+                            <md-select ng-model="nodoSeleccionado.tipo" >
+                              <md-option ng-repeat="tipo in tipos" value="{{tipo}}">
+                                {{tipo}}
+                              </md-option>
+                            </md-select>
+                        
                         <!--div>
                             <md-checkbox ng-model="estaValidado" ng-disabled="true">Validado</md-checkbox>
                         </div-->
                       </md-input-container>
                     </div>
                 </div>
-                <md-button class="botonesApp" type="button"  ng-click="guardarElem()"
+                <md-button id="guardarTecnologia" class="botonesApp" type="button"  ng-click="guardarElem()"
                            ng-disabled="datosNodo.$invalid">Guardar</md-button>
                 <md-button class="botonesApp" ng-show="true && (nodoSeleccionado.clase=='hojaInvalida')" type="button"  ng-click="validarElem()">Validar</md-button>
-                <md-autocomplete class="mozilla"
+                <md-autocomplete class="mozillaAutocompleteTecnologias"
                                  id="autocompleteTecnologias" 
                                  ng-show="hayRefAsociadas && (nodoSeleccionado.clase=='hojaInvalida')"
                                  md-selected-item="clientes.elemSeleccionado"
@@ -129,6 +132,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 

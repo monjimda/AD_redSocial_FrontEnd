@@ -9,7 +9,8 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
         console.log($rootScope.idPerfilVisitar);
         servicioRest.enviarPeticion($rootScope.idPerfilVisitar)
         .then(function(data) {
-            
+            $rootScope.esAmigo=1;
+            $location.path("/perfilVisita");
         
         })
         .catch(function(err) {
@@ -21,8 +22,8 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
         //cambiamos el estado de la referencia a 'borrador'
         
     }
-    if($rootScope.esAmigo===3){//CAMBIAR RESULT Y DATA POR PERFILVISITAR.ALGO
-        
+    if($rootScope.esAmigo===2){//CAMBIAR RESULT Y DATA POR PERFILVISITAR.ALGO
+        var result=$rootScope.perfilVisitar.fotos;
         console.log("fotos pre",result);
         var data=angular.copy(result);
         for(var i=0;i<data.length;i++){
@@ -35,9 +36,7 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
             }
         }
         
-        document.getElementById("fotoPerfil").setAttribute('src',data[elemEliminar]);
                 console.log(data[elemEliminar].substring(data[elemEliminar].indexOf("FrontEnd/") + 9));
-                $scope.prueba=data[elemEliminar];//DOWNLOAD BUTTON
                 data.splice(elemEliminar,1);//ELIMINAMOS EL DE PERFIL PARA DEJAR EL RESTO
         
         console.log("fotos despues",data);
@@ -51,6 +50,12 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
             console.log(self.foto);
         
     }
+        
+        
+        
+        
+        
+        
 
     }
 
