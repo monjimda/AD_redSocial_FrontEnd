@@ -188,7 +188,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
 		);
 	}
        
-    servicioRest.getTecnologias().then(
+    servicioRest.getTablon($rootScope.usuarioLS.nick).then(
         function (response) {
             actualizarArbol(response);
         });
@@ -222,12 +222,11 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
         console.log("aa");
     }
     
-    $scope.tipos=["OpenSource", "Suscripción", "Licencia"];
     
     $scope.eliminarElem=function(ev, scope){
         if(true){
             ev.stopImmediatePropagation();
-            servicioRest.deleteTecnologia(scope.$modelValue.nombre)
+            servicioRest.deleteComentario(scope.$modelValue._id, $rootScope.usuarioLS.nick)
                 .then(function(data) {
                     //eliminarNodo(scope);
                     actualizarArbol(data);
@@ -237,7 +236,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
                 console.log(err);
                     utils.popupInfo('',err);
                     console.log("Error al eliminar tecnologia");
-                    servicioRest.getTecnologias().then(
+                    servicioRest.getTablon($rootScope.usuarioLS.nick).then(
                     function (response) {
                         actualizarArbol(response);
                     });
@@ -250,23 +249,11 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
     
     $scope.aniadirElem=function(ev, scope, tipoElem){
         $scope.hayError=false;
-        var tipo;
-        switch(tipoElem){
-                
-            case "hojaInvalida":  tipo = "Tecnologia pendiente de validar";
-                break;
-            case "nodo":  tipo = "Tecnologia intermedia";
-                break;
-            case "hoja":  tipo = "Tecnologia final";
-                break;
-            default:tipo = tipoElem;
-        }
         ev.stopImmediatePropagation();
-        $scope.titulo = "Añadir " + tipo;
+        $scope.titulo = "Enviar comentario";
         $scope.nodoSeleccionado={'clase':tipoElem};
         nodeData=scope.$modelValue;
         operacion="anadir";
-        $scope.estaValidado=$scope.nodoSeleccionado.clase==='hoja';
         setTimeout(function(){ 
             //Se necesita un tiem out para dar tiempo a que se cargue el lanzar ayuda
             nombreTecnologia.focus();
@@ -274,42 +261,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
     };
     
     $scope.seleccionarElemento=function(elem, nodo){
-        
-        $scope.hayError=false;
-        var tipo;
-        switch(nodo.clase){
-                
-            case "hojaInvalida":  tipo = "Tecnologia pendiente de validar";
-                break;
-            case "nodo":  tipo = "Tecnologia intermedia";
-                break;
-            case "hoja":  tipo = "Tecnologia final";
-                break;
-            default:tipo = nodo.clase;
-        }
-        $scope.titulo = "Editar " + tipo;
-        nodeData=nodo;
-        if(nodeData.clase=="nodo"){
-            $scope.nodoSeleccionado={
-            nombre: nodeData.nombre,
-            nodosHijos: nodeData.nodosHijos,
-            clase: nodeData.clase
-            
-            };
-        } else {
-            //Se elimina el texto del autocumplete de rechazar tecnologia
-            $scope.clientes.texto="";
-            $scope.nodoSeleccionado={
-            nombre: nodeData.nombre,
-            nodosHijos: nodeData.nodosHijos,
-            producto: nodeData.producto,
-            tipo: nodeData.tipo,
-            clase: nodeData.clase
-            };
-        }
-  
-        
-        $scope.estaValidado=$scope.nodoSeleccionado.clase==='hoja';
+
         
         elem=elem.$element;
         
@@ -327,11 +279,6 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
             // asignamos el elemento seleccionado al actual
             elementoSeleccionado = elem;
         }
-        operacion="editar";
-        setTimeout(function(){ 
-            //Se necesita un tiem out para dar tiempo a que se cargue el lanzar ayuda
-            nombreTecnologia.focus();
-        }, 100)
         
     };
         
@@ -339,7 +286,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
         if(nodos.nodosHijos != null){
             var i=0;
             while(!encontrado && i<nodos.nodosHijos.length){
-                if(nodos.nodosHijos[i].nombre===nombreNodo){
+                if(nodos.nodosHijos[i].contenido===nombreNodo){
                     encontrado=true;
                 }
                 else{
@@ -353,13 +300,13 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
     
     $scope.guardarElem=function(){
         
-        var nombreRepetido = comprobarArbol($scope.data[0], $scope.nodoSeleccionado.nombre, false);
+        var nombreRepetido = comprobarArbol($scope.data[0], $scope.nodoSeleccionado.contenido, false);
         //var nombreRepetido=false;
-        if(!nombreRepetido || (operacion==="editar" && nodeData.nombre===$scope.nodoSeleccionado.nombre)){
+        if(!nombreRepetido || (operacion==="editar" && nodeData.contenido===$scope.nodoSeleccionado.contenido)){
             //------------Añadir elemento
             if(operacion=="anadir"){
-                $scope.nodoSeleccionado.tipo=$rootScope.usuarioLS.nick;
-                servicioRest.postTecnologia(nodeData.nombre, $scope.nodoSeleccionado)
+                $scope.nodoSeleccionado.propietario=$rootScope.usuarioLS.nick;
+                servicioRest.postComentario(nodeData._id, $scope.nodoSeleccionado, $rootScope.usuarioLS.nick)//el ult es $root.. perfilvisitaid en visita
                 .then(function(data) {
                     console.log(data);
                     actualizarArbol(data);
@@ -367,7 +314,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
                     toast("Tecnologia añadida");
                     //nodeData.nodosHijos.push($scope.nodoSeleccionado);
                 }).catch(function(err) {
-                    servicioRest.getTecnologias().then(
+                    servicioRest.getTablon($rootScope.usuarioLS.nick).then(
                     function (response) {
                         actualizarArbol(response);
                     });
@@ -377,7 +324,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
             }
              //------------Editar elemento
             else if (operacion=="editar"){
-                var oldId=nodeData.nombre;
+                var oldId=nodeData.contenido;
 
 
                 servicioRest.putTecnologia(oldId, $scope.nodoSeleccionado)
@@ -385,13 +332,13 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
                     actualizarArbol(data);
                     getHojasValidadas();
                     toast("Tecnologia modificada");
-                    /*nodeData.nombre=$scope.nodoSeleccionado.nombre;
+                    /*nodeData.contenido=$scope.nodoSeleccionado.contenido;
                     if(nodeData.clase!="nodo"){
-                        nodeData.tipo=$scope.nodoSeleccionado.tipo;
+                        nodeData.propietario=$scope.nodoSeleccionado.propietario;
                         nodeData.producto=$scope.nodoSeleccionado.producto;
                     }*/
                 }).catch(function(err) {
-                    servicioRest.getTecnologias().then(
+                    servicioRest.getTablon($rootScope.usuarioLS.nick).then(
                     function (response) {
                         actualizarArbol(response);
                     });
@@ -405,118 +352,6 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
             utils.popupInfo('',"El nombre de la tecnologia ya esta en uso");
         }
     };
-    
-    $scope.validarElem=function(){
-        $mdDialog.show(
-            $mdDialog.confirm()
-            .clickOutsideToClose(true)
-            .title('Validar hoja')
-            .content('Estas seguro de querer validar la hoja?')
-            .ariaLabel('Lucky day')
-            .ok('Validar')
-            .cancel('Cancelar')
-        ).then(function() {
-            nodeData.clase="hoja";
-            $scope.nodoSeleccionado.clase="hoja";
-            $scope.estaValidado=$scope.nodoSeleccionado.clase==='hoja';
-            $scope.guardarElem();
-        });
-    };
-    function getHojasValidadas(){
-        servicioRest.getTecnologiasFinales().then(
-            function(response) {
-                var aux=[];
-                for(var i=0;i<response.length;i++){
-                    if(response[i].clase==="hoja"){
-                        aux.push(response[i]);
-                    }
-                }
-                $scope.clientes.lista= aux.map( function (tec) {
-                    return {
-                        value: tec.nombre,
-                        display: tec.nombre
-                    };
-                });
-                console.log($scope.clientes.lista);
-            });
-    }
-    getHojasValidadas();
-    
-    $scope.filtrar = function (texto) {
-        var resultado;
-        var array;
-        // Determinamos cual es el array a filtrar y cuanl es el índice del resultado    
-            array=$scope.clientes.lista;
-            $scope.posicionEnArray=undefined;
-        // hacemos la búsqueda en el array
-        if(texto!==""){
-            //Si hay algo de texto, cogemos los elementos que tengan el texto en el nombre y/o en las siglas
-            resultado=array.filter(function (cliente) {
-                return (cliente.display.toLowerCase().indexOf(texto.toLowerCase()) !==-1);
-            });
-        }else{
-            //si no hay texto, asignamos el resultado de la búsqueda al array completo para que se recarguen todos los datos
-            resultado=array;
-        }
-        return resultado;
-    }
-        //cargamos los datos en el autocomplete a través del controlador          
-
-    $scope.rechazarElem=function(hayRefAsociadas){
-        if(hayRefAsociadas){
-            
-            if($scope.clientes.elemSeleccionado!=undefined){
-                servicioRest.rechazarTecnologia(nodeData.nombre, $scope.clientes.elemSeleccionado.value).then(
-                function (response) {
-                    $scope.clientes.elemSeleccionado.value=undefined;
-                    servicioRest.deleteTecnologia(nodeData.nombre)
-                        .then(function(data) {
-                            //eliminarNodo(scope);
-                            actualizarArbol(data);
-                            $scope.nodoSeleccionado=null;
-                            toast("Tecnologia rechazada");
-
-                        }).catch(function(err) {
-                            utils.popupInfo('',"Error al rechazar tecnologia.");
-                            console.log("Error al rechazar tecnologia");
-                            servicioRest.getTecnologias().then(
-                            function (response) {
-                                actualizarArbol(response);
-                            });
-                        });  
-                });
-            }else{
-                $scope.hayError=true;
-            }
-        }
-        else{
-            servicioRest.deleteTecnologia(nodeData.nombre)
-                    .then(function(data) {
-                        //eliminarNodo(scope);
-                        actualizarArbol(data);
-                        $scope.nodoSeleccionado=null;
-                        toast("Tecnologia rechazada");
-
-                    }).catch(function(err) {
-                        utils.popupInfo('',"Error al rechazar tecnologia.");
-                        console.log("Error al rechazar tecnologia");
-                        servicioRest.getTecnologias().then(
-                        function (response) {
-                            actualizarArbol(response);
-                        });
-                    }); 
-        }
-    };
-    
-       
-    //pulsar intro crea  la tecnologia si es posible
-    $scope.intro = function (pressEvent){    
-        console.log("111");
-        if(pressEvent.keyCode == 13){ 
-            $scope.guardarElem();   
-          }
-    };
-    
     
     
 
