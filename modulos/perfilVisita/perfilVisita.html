@@ -49,7 +49,7 @@
         <li ng-repeat="node in node.nodosHijos" ui-tree-node data-nodrop-enabled="false" ng-include="'nodes_renderer.html'"></li>
     </ol>
 </script>
-<div class="row">
+<div class="row" id="tablon">
     <div class="col-sm-6">
         <div ui-tree="eventosArbol" id="tree-root" data-drag-delay="250" >
           <ol ui-tree-nodes ng-model="data">
