@@ -177,7 +177,6 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
   var nodeData;
     var operacion;
     $scope.nodoSeleccionado={};
-    $scope.nodoSeleccionado.clase="raiz";
     $scope.clientes={};
     //$scope.clientes.elemSeleccionado={};
     //console.log($scope.clientes.elemSeleccionado.value);
@@ -190,6 +189,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
        
     servicioRest.getTablon($rootScope.usuarioLS.nick).then(
         function (response) {
+            console.log("tablon",response);
             actualizarArbol(response);
         });
     
@@ -212,7 +212,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
         }
     };
     
-    $scope.nodoSeleccionado;
+    $scope.nodoSeleccionado=null;
     
     // Iniciamos el nodo selleccionado a undefined para indicar que inicialmente no hay ninguno seleccionado
     var elementoSeleccionado=undefined;
@@ -244,10 +244,11 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
     };
     
     $scope.aniadirElem=function(ev, scope, tipoElem){
+        $scope.aniadir=true;
         $scope.hayError=false;
         ev.stopImmediatePropagation();
         $scope.titulo = "Enviar comentario";
-        $scope.nodoSeleccionado={'clase':tipoElem};
+        $scope.nodoSeleccionado={'clase':"nodo"};
         nodeData=scope.$modelValue;
         operacion="anadir";
         setTimeout(function(){ 
@@ -257,6 +258,38 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
     };
     
     $scope.seleccionarElemento=function(elem, nodo){
+        $scope.aniadir=false;
+        $scope.hayError=false;
+        var tipo;
+        switch(nodo.clase){
+                
+            case "hojaInvalida":  tipo = "Competencia pendiente de validar";
+                break;
+            case "nodo":  tipo = "Competencia intermedia";
+                break;
+            case "hoja":  tipo = "Competencia final";
+                break;
+            default:tipo = nodo.clase;
+        }
+        $scope.titulo = "Editar " + tipo;
+        nodeData=nodo;
+        if(nodeData.clase=="nodo"){
+            $scope.nodoSeleccionado={
+            contenido: nodeData.contenido,
+            nodosHijos: nodeData.nodosHijos,
+            clase: nodeData.clase
+            
+            };
+        } else {
+            //Se elimina el texto del autocumplete de rechazar competencia
+            $scope.nodoSeleccionado={
+            contenido: nodeData.contenido,
+            nodosHijos: nodeData.nodosHijos,
+            producto: nodeData.producto,
+            tipo: nodeData.tipo,
+            clase: nodeData.clase
+            };
+        }
 
         
         elem=elem.$element;
@@ -275,6 +308,11 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
             // asignamos el elemento seleccionado al actual
             elementoSeleccionado = elem;
         }
+        operacion="editar";
+        setTimeout(function(){ 
+            //Se necesita un tiem out para dar tiempo a que se cargue el lanzar ayuda
+            nombreCompetencia.focus();
+        }, 100)
         
     };
     
@@ -284,7 +322,7 @@ app.controller('controladorPerfil', function(servicioRest, config, $scope, $http
             //------------Añadir elemento
      
                 $scope.nodoSeleccionado.propietario=$rootScope.usuarioLS.nick;
-                servicioRest.postComentario(nodeData._id, $scope.nodoSeleccionado, $rootScope.usuarioLS.nick)//el ult es $root.. perfilvisitaid en visita
+                servicioRest.postComentario(nodeData._id, $scope.nodoSeleccionado.nombre, $scope.nodoSeleccionado.propietario, $rootScope.usuarioLS.nick)//el ult es $root.. perfilvisitaid en visita
                 .then(function(data) {
                     console.log(data);
                     actualizarArbol(data);

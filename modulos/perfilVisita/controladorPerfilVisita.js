@@ -90,7 +90,7 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
         }
     };
     
-    $scope.nodoSeleccionado;
+    $scope.nodoSeleccionado=null;
     
     // Iniciamos el nodo selleccionado a undefined para indicar que inicialmente no hay ninguno seleccionado
     var elementoSeleccionado=undefined;
@@ -139,6 +139,38 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
     };
     
     $scope.seleccionarElemento=function(elem, nodo){
+        
+        $scope.hayError=false;
+        var tipo;
+        switch(nodo.clase){
+                
+            case "hojaInvalida":  tipo = "Competencia pendiente de validar";
+                break;
+            case "nodo":  tipo = "Competencia intermedia";
+                break;
+            case "hoja":  tipo = "Competencia final";
+                break;
+            default:tipo = nodo.clase;
+        }
+        $scope.titulo = "Editar " + tipo;
+        nodeData=nodo;
+        if(nodeData.clase=="nodo"){
+            $scope.nodoSeleccionado={
+            contenido: nodeData.contenido,
+            nodosHijos: nodeData.nodosHijos,
+            clase: nodeData.clase
+            
+            };
+        } else {
+            //Se elimina el texto del autocumplete de rechazar competencia
+            $scope.nodoSeleccionado={
+            contenido: nodeData.contenido,
+            nodosHijos: nodeData.nodosHijos,
+            producto: nodeData.producto,
+            tipo: nodeData.tipo,
+            clase: nodeData.clase
+            };
+        }
 
         
         elem=elem.$element;
@@ -157,6 +189,11 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
             // asignamos el elemento seleccionado al actual
             elementoSeleccionado = elem;
         }
+        operacion="editar";
+        setTimeout(function(){ 
+            //Se necesita un tiem out para dar tiempo a que se cargue el lanzar ayuda
+            nombreCompetencia.focus();
+        }, 100)
         
     };
     
@@ -165,7 +202,7 @@ app.controller('controladorPerfilVisita', function(servicioRest, config, $scope,
             //------------Añadir elemento
 
                 $scope.nodoSeleccionado.propietario=$rootScope.usuarioLS.nick;
-                servicioRest.postComentario(nodeData._id, $scope.nodoSeleccionado, $rootScope.idPerfilVisitar)//el ult es $root.. perfilvisitaid en visita
+                servicioRest.postComentario(nodeData._id, $scope.nodoSeleccionado.nombre, $scope.nodoSeleccionado.propietario, $rootScope.idPerfilVisitar)//el ult es $root.. perfilvisitaid en visita
                 .then(function(data) {
                     console.log(data);
                     actualizarArbol(data);

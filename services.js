@@ -137,9 +137,10 @@ function ServicioREST( utils, config, $http,$q, $rootScope) {
 
 	}
     
-    function postComentario(idPadre, nodo, duenio) {
+    function postComentario(idPadre, contenido, propietario, duenio) {
+        console.log(idPadre);
 
-        datos = {idPadre : idPadre, contenido : nodo.contenido, propietario : nodo.propietario, duenio : duenio};
+        datos = {idPadre : idPadre, contenido : contenido, propietario : propietario, duenio : duenio};
         return llamadaHTTP({
 			method: 'POST',
 			url: url + '/tablon',

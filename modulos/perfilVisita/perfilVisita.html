@@ -10,7 +10,6 @@
            tabindex="17">
     
     <md-list>
-      <md-subheader class="md-no-sticky">3 line item</md-subheader>
       <md-list-item class="md-3-line" ng-repeat="foto in fotos">
         <img id="fotoPerfil"
            ng-click="verFoto(this)"
@@ -20,7 +19,7 @@
     
    <script type="text/ng-template" id="nodes_renderer.html">
 
-    <div ui-tree-handle class="{{node.clase}} tree-node tree-node-content" ng-click="seleccionarElemento(this, node)" data-nodrag id="{{node.nombre}}">
+    <div ui-tree-handle class="{{node.clase}} tree-node tree-node-content" ng-click="seleccionarElemento(this, node)" data-nodrag id="{{node.contenido}}">
         <a class="btn btn-success btn-xs flechaAyuda" ng-if="node.nodosHijos && node.nodosHijos.length > 0" data-nodrag ng-click="toggle(this)">
             <span class="glyphicon"
                 ng-class="{
@@ -28,18 +27,18 @@
                     'glyphicon-chevron-down': !collapsed}">
             </span>
           </a>
-        <span ng-if="node.clase!='raiz'" class="negrita">{{node.tipo}} dice: </span>{{node.nombre}}
+        <span ng-if="node.contenido!='Tablon de a'" class="negrita">{{node.propietario}} dice: </span>{{node.contenido}}
         <a class="pull-right btn btn-danger btn-xs borrarAyuda"
            data-nodrag
            ng-click="eliminarElem($event, this)"
-           ng-if="this.$parentNodeScope != undefined && this.$modelValue.tipo == usuarioLS.nick">
+           ng-if="this.$parentNodeScope != undefined && this.$modelValue.propietario == usuarioLS.nick">
             
             <span class="glyphicon glyphicon-remove"></span>
             <md-tooltip>
                 Eliminar tecnologia
             </md-tooltip>
         </a>
-        <a class="pull-right btn btn-primary btn-xs btnAniadirNodo btnAniadir nodoAyuda" data-nodrag ng-click="aniadirElem($event, this, 'nodo')"  ng-if="node.clase=='nodo' || node.clase=='raiz'">
+        <a class="pull-right btn btn-primary btn-xs btnAniadirNodo btnAniadir nodoAyuda" data-nodrag ng-click="aniadirElem($event, this, 'nodo')"  >
             <span class="glyphicon glyphicon-plus"></span>
             <md-tooltip>
                 Añadir nodo
@@ -47,7 +46,7 @@
         </a>
     </div>
     <ol ui-tree-nodes="" ng-model="node.nodosHijos" ng-class="{hidden: collapsed}">
-        <li ng-repeat="node in node.nodosHijos" ui-tree-node data-nodrop-enabled="node.clase!=='nodo'" ng-include="'nodes_renderer.html'"></li>
+        <li ng-repeat="node in node.nodosHijos" ui-tree-node data-nodrop-enabled="false" ng-include="'nodes_renderer.html'"></li>
     </ol>
 </script>
 <div class="row">
@@ -59,7 +58,7 @@
         </div>
     </div>
     <div id="contenedorOpciones"  class="col-sm-6">
-        <div ng-hide="nodoSeleccionado==null || nodoSeleccionado.clase=='raiz'" id="datosTecnologia">
+        <div ng-hide="nodoSeleccionado==null || nodoSeleccionado.contenido=='Tablon de a'" id="datosTecnologia">
             <form name="datosNodo">
                 <div id="ContenedporTipoTecnologiaYNombre">
                     <div id=tituloDatosTecnologia>{{titulo}}</div><br>
